@@ -28,6 +28,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 
+import { blue, deepOrange } from "@mui/material/colors";
 const TopNav: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -43,49 +44,10 @@ const TopNav: React.FC = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "#ffffff" }}>
       <Toolbar>
-        {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Top Navigation
-        </Typography> */}
-        <Box
-          sx={{
-            width: "100%", 
-            display: "flex",
-            justifyContent: "flex-start", 
-            padding: "10px",
-            ml:28
-          }}
-        >
-          <Box
-            sx={{
-              width: "558px",
-              height: "44px",
-              display: "flex",
-              alignItems: "center", 
-              backgroundColor: "#E9EEF6",
-              borderRadius: "28px",
-              padding: "10px 17px",
-              gap: "8px",
-            }}
-          >
-            <SearchIcon sx={{ color: "#5F6774" }} />
-            <TextField
-              fullWidth
-              placeholder="Enter keyword to search all folders or select folder to search"
-              variant="standard"
-              InputProps={{
-                disableUnderline: true,
-                sx: {
-                  padding: 0,
-                  color: "#5F6774",
-                  fontSize: "16px",
-                },
-              }}
-            />
-            <IconButton sx={{ color: "#5F6774" }}>
-              <TuneIcon />
-            </IconButton>
-          </Box>
-        </Box>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {/* Top Navigation */}
+        </Typography>
+
         <Box
           sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
         >
