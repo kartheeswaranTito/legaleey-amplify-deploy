@@ -1,17 +1,17 @@
 
 // components/CommonLayout.tsx
 import React, { ReactNode } from 'react';
-import TopNav from './TopNav';
+import TopNav_Home from './TopNav_Home';
 import SideNav from './SideNav';
 
-interface CommonLayoutProps {
+interface CommonLayout_HomeProps {
   children: ReactNode;
 }
 
-const CommonLayout: React.FC<CommonLayoutProps> = ({ children }) => {
+const CommonLayout_Home: React.FC<CommonLayout_HomeProps> = ({ children }) => {
   return (
     <div>
-      <TopNav />
+      <TopNav_Home />
       <div style={{  }}>
         <SideNav />
         {/* <main style={{  }}> */}
@@ -23,4 +23,4 @@ const CommonLayout: React.FC<CommonLayoutProps> = ({ children }) => {
   );
 };
 
-export default CommonLayout;
+export default CommonLayout_Home;

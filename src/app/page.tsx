@@ -12,9 +12,9 @@ export default function App() {
     <Authenticator>
       {({ signOut, user }) => (
         <main>
-          {/* <h1>H</h1> */}
+         
+          {/* <button onClick={signOut}>Sign out</button> */}
           <Home/>
-          <button onClick={signOut}>Sign out</button>
         </main>
       )}
     </Authenticator>
