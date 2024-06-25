@@ -323,8 +323,8 @@ const SideNav: React.FC = () => {
               onClick={handleClick}
               startIcon={<Add />}
               sx={{
-                width: "auto", 
-                height: "50px", 
+                width: "159px", 
+                height: "42px", 
                 gap: "8px", 
                 justifyContent: "center",
                 marginLeft: "0px",

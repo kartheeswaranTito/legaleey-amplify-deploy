@@ -1,5 +1,3 @@
-// components/TopNav.tsx
-
 "use client"; // Ensure this component is client-side
 
 import React from "react";
@@ -16,22 +14,20 @@ import {
   Tooltip,
   ListItemIcon,
   Button,
-  TextField,
 } from "@mui/material";
 import {
   SettingsOutlined,
   AccountCircleOutlined,
-  Logout,
   ShieldOutlined,
+  Logout,
 } from "@mui/icons-material";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import SearchIcon from "@mui/icons-material/Search";
-import TuneIcon from "@mui/icons-material/Tune";
+import { useAuthenticator } from "@aws-amplify/ui-react"; // Import useAuthenticator
 
-import { blue, deepOrange } from "@mui/material/colors";
 const TopNav: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { signOut } = useAuthenticator(); // Access signOut function
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -48,9 +44,7 @@ const TopNav: React.FC = () => {
           {/* Top Navigation */}
         </Typography>
 
-        <Box
-          sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
-        >
+        <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
           <HelpOutlineIcon sx={{ color: "black", marginRight: 1 }} />
           <Tooltip title="Account settings">
             <IconButton
@@ -113,7 +107,6 @@ const TopNav: React.FC = () => {
             </ListItemIcon>
             Personal Information
           </MenuItem>
-          {/* <Divider /> */}
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <SettingsOutlined fontSize="small" />
@@ -128,17 +121,20 @@ const TopNav: React.FC = () => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
-            <ListItemIcon></ListItemIcon>
+            <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
             <Button
               variant="outlined"
               color="error"
-              // size="medium"
               sx={{
                 width: "200px",
               }}
+              onClick={signOut}
             >
               SIGN OUT
             </Button>
+            
           </MenuItem>
         </Menu>
       </Toolbar>

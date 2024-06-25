@@ -22,10 +22,13 @@ npm install @mui/material @emotion/react @emotion/styled
 
 npm install @mui/icons-material
 
+npm install @mui/material @mui/lab (my documents page tab component)
+
+npm install node-sass (this for scss file)
+
+npm install sass
+
 npm run dev
 
 
-Legaleey-170 
-
- npm install @mui/material @mui/lab
 
