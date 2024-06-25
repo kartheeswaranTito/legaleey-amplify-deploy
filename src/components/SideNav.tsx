@@ -304,8 +304,8 @@ const SideNav: React.FC = () => {
     >
       <Toolbar
         sx={{
-          borderRadius: "0 20px 0 0",
           backgroundColor: "#F7F9FC",
+          borderRadius: "0 20px 0 0", 
         }}
       >
         <Typography variant="h5" noWrap color="#1469FB">

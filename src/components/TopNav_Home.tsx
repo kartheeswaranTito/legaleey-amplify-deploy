@@ -95,7 +95,7 @@ const TopNav: React.FC = () => {
                 height: 10,
                 bgcolor: "background.paper",
                 transform: "translateY(-50%) rotate(45deg)",
-                zIndex: 0,
+               zIndex: 0,
               },
             },
           }}

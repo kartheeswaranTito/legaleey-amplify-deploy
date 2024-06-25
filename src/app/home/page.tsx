@@ -163,8 +163,8 @@ export default function Home() {
       <Container maxWidth="md" sx={{ padding: 2 }}>
       <Box
       sx={{
-        textAlign: "center",
         background: "#F2F4F7",
+        textAlign: "center",
         width: "1142px",
         height: "164px",
         top: "24px",
