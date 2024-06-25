@@ -1,8 +1,9 @@
-
+"use client";
 // components/CommonLayout.tsx
 import React, { ReactNode } from 'react';
 import TopNav_Home from './TopNav_Home';
 import SideNav from './SideNav';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 interface CommonLayout_HomeProps {
   children: ReactNode;
@@ -10,6 +11,7 @@ interface CommonLayout_HomeProps {
 
 const CommonLayout_Home: React.FC<CommonLayout_HomeProps> = ({ children }) => {
   return (
+    <Authenticator.Provider>
     <div>
       <TopNav_Home />
       <div style={{  }}>
@@ -20,6 +22,7 @@ const CommonLayout_Home: React.FC<CommonLayout_HomeProps> = ({ children }) => {
         </main>
       </div>
     </div>
+    </Authenticator.Provider>
   );
 };
 
