@@ -38,7 +38,7 @@ const TopNav: React.FC = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#ffffff" }}>
+    <AppBar position="static" sx={{ backgroundColor: "#F2F4F7", borderRadius: "0 0 0 20px"}}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {/* Top Navigation */}
