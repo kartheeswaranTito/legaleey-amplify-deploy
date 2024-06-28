@@ -1,6 +1,4 @@
-// components/TopNav.tsx
-
-"use client"; // Ensure this component is client-side
+"use client"; 
 
 import React from "react";
 import {
