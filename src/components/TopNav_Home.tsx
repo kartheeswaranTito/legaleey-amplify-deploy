@@ -1,4 +1,4 @@
-"use client"; 
+"use client"; // Ensure this component is client-side
 
 import React from "react";
 import {

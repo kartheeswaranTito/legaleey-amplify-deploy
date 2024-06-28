@@ -29,6 +29,7 @@ export default function Home() {
         background: "#F2F4F7",
         textAlign: "center",
         width: "900px",
+        
         height: "164px",
         top: "24px",
         left: "21px",
