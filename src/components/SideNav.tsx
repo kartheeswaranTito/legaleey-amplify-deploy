@@ -129,7 +129,7 @@ const SideNav: React.FC = () => {
 									handleClose();
 								}}
 							>
-								Add New item
+								Add New Document
 							</MenuItem>
 							<MenuItem onClick={handleClose}>Create Folder</MenuItem>
 						</Menu>
