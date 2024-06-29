@@ -91,7 +91,7 @@
 //           <TabList
 //             onChange={handleChange}
 //             aria-label="Document tabs"
-//             centered
+//         
 //             textColor="primary"
 //             indicatorColor="primary"
 //             variant="scrollable"
@@ -371,92 +371,97 @@ export default function MyDocuments() {
           </TabList>
         </Box>
         <TabPanel value="1">
-          {data.length === 0 ? (
-            <Box sx={{ mt: 20, textAlign: 'center' }}>
-              <Typography variant="h6" component="h1" gutterBottom color="#323B4A">
-                There Are No Verified Documents
-              </Typography>
-              <Button
-                variant="contained"
-                size="large"
-                startIcon={<Add />}
-                sx={{ textAlign: 'center' }}
-              >
-                ADD NEW
-              </Button>
-            </Box>
-          ) : (
-            <Box>
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-                <IconButton onClick={() => handleViewToggle("table")}
-                   sx={{ color: view === "table" ? "#1469FB" : "default" }}
-                   >
-                  <MenuIcon />
-                </IconButton>
-                <IconButton onClick={() => handleViewToggle("grid")}
-                    sx={{ color: view === "grid" ? "#1469FB" : "default" }}
-                    >
-                  <GridViewIcon />
-                </IconButton>
-              </Box>
-              {view === "table" ? (
-                <Box sx={{ height: 400, width: '100%' }}>
-                  <DataGrid
-                    rows={data}
-                    columns={columns}
-                    pageSize={data.length}
-                    rowsPerPageOptions={[data.length]}
-                    disableSelectionOnClick
-                  />
-                </Box>
-              ) : (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                  {data.map((item) => (
-                    <Paper key={item.id} sx={{ padding: 2, minWidth: 200 }}>
-                      <Typography variant="h6">{item.file_name}</Typography>
-                      <Typography>Uploaded Date: {item.uploaded_date}</Typography>
-                      <Typography>File Type: {item.file_type}</Typography>
-                      <Typography>File Size: {item.file_size}</Typography>
-                      <IconButton onClick={(event) => handleMenuClick(event, item)}>
-                        <MoreVert />
-                      </IconButton>
-                    </Paper>
-                  ))}
-                </Box>
-              )}
-              <Menu
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={() => handleMenuItemClick('rename')}>
-                  <ListItemIcon>
-                    <Edit fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>Rename</ListItemText>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuItemClick('download')}>
-                  <ListItemIcon>
-                    <GetApp fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>Download</ListItemText>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuItemClick('info')}>
-                  <ListItemIcon>
-                    <Info fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>Info</ListItemText>
-                </MenuItem>
-                <MenuItem onClick={() => handleMenuItemClick('delete')}>
-                  <ListItemIcon>
-                    <Delete fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText>Delete</ListItemText>
-                </MenuItem>
-              </Menu>
-            </Box>
-          )}
-        </TabPanel>
+  {data.length === 0 ? (
+    <Box sx={{ mt: 20, textAlign: 'center' }}>
+      <Typography variant="h6" component="h1" gutterBottom color="#323B4A">
+        There Are No Verified Documents
+      </Typography>
+      <Button
+        variant="contained"
+        size="large"
+        startIcon={<Add />}
+        sx={{ textAlign: 'center' }}
+      >
+        ADD NEW
+      </Button>
+    </Box>
+  ) : (
+    <Box>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+        <IconButton onClick={() => handleViewToggle("table")}
+           sx={{ color: view === "table" ? "#1469FB" : "default" }}
+           >
+          <MenuIcon />
+        </IconButton>
+        <IconButton onClick={() => handleViewToggle("grid")}
+            sx={{ color: view === "grid" ? "#1469FB" : "default" }}
+            >
+          <GridViewIcon />
+        </IconButton>
+      </Box>
+      {view === "table" ? (
+        <Box sx={{ height: 400, width: '100%' }}>
+          <DataGrid
+            rows={data}
+            columns={columns}
+            pageSize={data.length}  // Set pageSize to display all rows without pagination
+            rowsPerPageOptions={[data.length]}  // Remove pagination controls
+            sx={{
+              "& .MuiDataGrid-columnHeaders": {
+                fontWeight: "bold",
+              },
+            }}
+          />
+        </Box>
+      ) : (
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+          {data.map((item) => (
+            <Paper key={item.id} sx={{ padding: 2, minWidth: 200 }}>
+              <Typography variant="h6">{item.file_name}</Typography>
+              <Typography>Uploaded Date: {item.uploaded_date}</Typography>
+              <Typography>File Type: {item.file_type}</Typography>
+              <Typography>File Size: {item.file_size}</Typography>
+              <IconButton onClick={(event) => handleMenuClick(event, item)}>
+                <MoreVert />
+              </IconButton>
+            </Paper>
+          ))}
+        </Box>
+      )}
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleMenuClose}
+      >
+        <MenuItem onClick={() => handleMenuItemClick('rename')}>
+          <ListItemIcon>
+            <Edit fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Rename</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('download')}>
+          <ListItemIcon>
+            <GetApp fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Download</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('info')}>
+          <ListItemIcon>
+            <Info fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Info</ListItemText>
+        </MenuItem>
+        <MenuItem onClick={() => handleMenuItemClick('delete')}>
+          <ListItemIcon>
+            <Delete fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Delete</ListItemText>
+        </MenuItem>
+      </Menu>
+    </Box>
+  )}
+</TabPanel>
+
         <TabPanel value="2">
           {/* Content for UNVERIFIED tab */}
         </TabPanel>
