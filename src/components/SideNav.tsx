@@ -58,8 +58,8 @@ const SideNav: React.FC = () => {
     >
       <Toolbar
         sx={{
+          borderRadius: "0 20px 0 0",
           backgroundColor: "#F7F9FC",
-          borderRadius: "0 20px 0 0", 
         }}
       >
         <Typography variant="h5" noWrap color="#1469FB">
@@ -77,8 +77,8 @@ const SideNav: React.FC = () => {
               onClick={handleClick}
               startIcon={<Add />}
               sx={{
-                width: "159px", 
-                height: "42px", 
+                width: "auto", 
+                height: "50px", 
                 gap: "8px", 
                 justifyContent: "center",
                 marginLeft: "0px",
@@ -131,8 +131,12 @@ const SideNav: React.FC = () => {
                 },
               },
               backgroundColor: pathname === "/home" ? "#397EF3" : "transparent",
-              borderRadius: "8px",
+              borderRadius: "6px",
               marginBottom: "3px",
+              width: "220px",
+              height: "50px",
+              justifyContent: "space-between",
+              marginLeft:"10px",  
             }}
           >
             <ListItemIcon
@@ -162,8 +166,12 @@ const SideNav: React.FC = () => {
               },
               backgroundColor:
                 pathname === "/my-documents" ? "#397EF3" : "transparent",
-              borderRadius: "8px",
-              marginBottom: "3px",
+                borderRadius: "6px",
+                marginBottom: "3px",
+                width: "220px",
+                height: "50px",
+                justifyContent: "space-between",
+                marginLeft:"10px",  
             }}
           >
             <ListItemIcon>
@@ -189,12 +197,17 @@ const SideNav: React.FC = () => {
                 backgroundColor: "#397EF3",
                 ".MuiListItemText-root, .MuiListItemIcon-root": {
                   color: "white",
+                 
                 },
               },
               backgroundColor:
                 pathname === "/trash" ? "#397EF3" : "transparent",
-              borderRadius: "8px",
-              marginBottom: "3px",
+                borderRadius: "6px",
+                marginBottom: "3px",
+                width: "220px",
+                height: "50px",
+                justifyContent: "space-between",
+                marginLeft:"10px",  
             }}
           >
             <ListItemIcon>
@@ -220,12 +233,17 @@ const SideNav: React.FC = () => {
                 backgroundColor: "#397EF3",
                 ".MuiListItemText-root, .MuiListItemIcon-root": {
                   color: "white",
+            
                 },
               },
               backgroundColor:
                 pathname === "/search-history" ? "#397EF3" : "transparent",
-              borderRadius: "8px",
+              borderRadius: "6px",
               marginBottom: "3px",
+              width: "220px",
+              height: "50px",
+              justifyContent: "space-between",
+              marginLeft:"10px",  
             }}
           >
             <ListItemIcon>
