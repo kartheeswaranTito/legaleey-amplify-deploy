@@ -93,6 +93,44 @@ const SideNav: React.FC = () => {
 								backgroundColor: "#FFFFFF",
 								color: "black",
 								boxShadow: `
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box", backgroundColor: "#F7F9FC" },
+      }}
+    >
+      <Toolbar
+        sx={{
+          borderRadius: "0 20px 0 0",
+          backgroundColor: "#F7F9FC",
+        }}
+      >
+        <Typography variant="h5" noWrap color="#1469FB">
+          LEGALEEY
+        </Typography>
+      </Toolbar>
+      <Box sx={{ overflow: "auto" }}>
+        <List>
+          {/* <Paper> */}
+          <ListItem sx={{mb:2}}>
+            <Button
+              size="large"
+              color="primary"
+              variant="contained"
+              onClick={handleClick}
+              startIcon={<Add />}
+              sx={{
+                width: "auto", 
+                height: "50px", 
+                gap: "8px", 
+                justifyContent: "center",
+                marginLeft: "0px",
+                backgroundColor: "#FFFFFF",
+                color: "black",
+                boxShadow: `
           0px 3px 1px -2px #00000033,
           0px 2px 2px 0px #00000024,
           0px 1px 5px 0px #0000001F
@@ -164,6 +202,63 @@ const SideNav: React.FC = () => {
 							}}
 						/>
 					</ListItem>
+                },
+              }}
+            >
+              Add New
+            </Button>
+            <Menu
+              id="menu-button"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right", // Align menu to the right of the button
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left", // Open from the right side towards left
+              }}
+            >
+              <MenuItem onClick={handleClose}>Add New Documents</MenuItem>
+              <MenuItem onClick={handleClose}>Create Folder</MenuItem>
+            </Menu>
+          </ListItem>
+          {/* </Paper> */}
+          <ListItem
+            button
+            onClick={() => handleNavigation("/home")}
+            sx={{
+              "&:hover": {
+                backgroundColor: "#397EF3",
+                ".MuiListItemText-root, .MuiListItemIcon-root": {
+                  color: "white",
+                },
+              },
+              backgroundColor: pathname === "/home" ? "#397EF3" : "transparent",
+              borderRadius: "6px",
+              marginBottom: "3px",
+              width: "220px",
+              height: "50px",
+              justifyContent: "space-between",
+              marginLeft:"10px",  
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                color: pathname === "/home" ? "white" : "inherit",
+              }}
+            >
+              <HomeOutlined />
+            </ListItemIcon>
+            <ListItemText
+              primary="Home"
+              sx={{
+                color: pathname === "/home" ? "white" : "inherit",
+              }}
+            />
+          </ListItem>
 
 					<ListItem
 						button
@@ -195,6 +290,40 @@ const SideNav: React.FC = () => {
 							}}
 						/>
 					</ListItem>
+          <ListItem
+            button
+            onClick={() => handleNavigation("/my-documents")}
+            sx={{
+              "&:hover": {
+                backgroundColor: "#397EF3",
+                ".MuiListItemText-root, .MuiListItemIcon-root": {
+                  color: "white",
+                },
+              },
+              backgroundColor:
+                pathname === "/my-documents" ? "#397EF3" : "transparent",
+                borderRadius: "6px",
+                marginBottom: "3px",
+                width: "220px",
+                height: "50px",
+                justifyContent: "space-between",
+                marginLeft:"10px",  
+            }}
+          >
+            <ListItemIcon>
+              <Description
+                sx={{
+                  color: pathname === "/my-documents" ? "white" : "inherit",
+                }}
+              />
+            </ListItemIcon>
+            <ListItemText
+              primary="My Documents"
+              sx={{
+                color: pathname === "/my-documents" ? "white" : "inherit",
+              }}
+            />
+          </ListItem>
 
 					<ListItem
 						button
@@ -226,6 +355,41 @@ const SideNav: React.FC = () => {
 							}}
 						/>
 					</ListItem>
+          <ListItem
+            button
+            onClick={() => handleNavigation("/trash")}
+            sx={{
+              "&:hover": {
+                backgroundColor: "#397EF3",
+                ".MuiListItemText-root, .MuiListItemIcon-root": {
+                  color: "white",
+                 
+                },
+              },
+              backgroundColor:
+                pathname === "/trash" ? "#397EF3" : "transparent",
+                borderRadius: "6px",
+                marginBottom: "3px",
+                width: "220px",
+                height: "50px",
+                justifyContent: "space-between",
+                marginLeft:"10px",  
+            }}
+          >
+            <ListItemIcon>
+              <DeleteOutlineOutlined
+                sx={{
+                  color: pathname === "/trash" ? "white" : "inherit",
+                }}
+              />
+            </ListItemIcon>
+            <ListItemText
+              primary="Trash"
+              sx={{
+                color: pathname === "/trash" ? "white" : "inherit",
+              }}
+            />
+          </ListItem>
 
 					<ListItem
 						button
@@ -261,5 +425,44 @@ const SideNav: React.FC = () => {
 			</Box>
 		</Drawer>
 	);
+          <ListItem
+            button
+            onClick={() => handleNavigation("/search-history")}
+            sx={{
+              "&:hover": {
+                backgroundColor: "#397EF3",
+                ".MuiListItemText-root, .MuiListItemIcon-root": {
+                  color: "white",
+            
+                },
+              },
+              backgroundColor:
+                pathname === "/search-history" ? "#397EF3" : "transparent",
+              borderRadius: "6px",
+              marginBottom: "3px",
+              width: "220px",
+              height: "50px",
+              justifyContent: "space-between",
+              marginLeft:"10px",  
+            }}
+          >
+            <ListItemIcon>
+              <PlagiarismOutlined
+                sx={{
+                  color: pathname === "/search-history" ? "white" : "inherit",
+                }}
+              />
+            </ListItemIcon>
+            <ListItemText
+              primary="Search History"
+              sx={{
+                color: pathname === "/search-history" ? "white" : "inherit",
+              }}
+            />
+          </ListItem>
+        </List>
+      </Box>
+    </Drawer>
+  );
 };
 export default SideNav;
