@@ -1,8 +1,6 @@
 import CommonLayout from "@/components/CommonLayout";
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
-import Image from "next/image"; 
-import '@fontsource/roboto/500.css';
 
 
 export default function Trash() {
@@ -29,53 +27,12 @@ export default function Trash() {
           Trash
         </Typography>
 
-        <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "calc(100vh - 200px)",
-          textAlign: "center",
-          position: "relative",
-          m:-6,
-          mr:8,
-        }}
-      >
-        <Box sx={{ position: "relative",
-         width: 188,
-         height: 187, 
-       
- }}>
-        
-      <Image
-        src="/images/trash.png"
-        fill
-        sizes="(max-width: 600px) 100vw, 50vw" 
-        priority 
-         alt="trash img"
-        style={{ objectFit: 'cover' }}
-/>
-        </Box>
-        <Typography
-          variant="h6"
-          component="h1"
-          gutterBottom
-          sx={{
-            color: "#323B4A",
-            fontFamily: "Roboto",
-            fontSize: "16px",
-            lineHeight: "22px",
-            letterSpacing: "0.46px",
-            mt: 2,
-            mb: 12,
-            
-          }}
-        >
-         Nothing In Trash
+        <Box sx={{ mt: 20, textAlign: 'center' }}>
+
+        <Typography variant="h6" component="h1" gutterBottom   color=" #323B4A">
+          Nothing in Trash
         </Typography>
-      </Box>
-        
+        </Box>
     </CommonLayout>
   );
   }
