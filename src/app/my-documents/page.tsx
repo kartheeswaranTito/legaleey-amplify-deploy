@@ -215,6 +215,7 @@ export default function MyDocuments() {
         </Box>
         <TabPanel value="1">
           <DataGrid
+            // 
             rows={rows.filter(row => row.verified)}
             columns={columns}
             checkboxSelection
