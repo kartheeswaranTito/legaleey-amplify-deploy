@@ -1,103 +1,166 @@
 
-
-"use client"
+"use client";
+import React, { useState } from 'react';
 import CommonLayout from "@/components/CommonLayout";
-import * as React from "react";
 import {
-	Box,
-	Breadcrumbs,
-	Button,
-	Container,
-	InputBase,
-	Link,
-	Tab,
-	Typography,
-	alpha,
-	styled,
+  Box,
+  Breadcrumbs,
+  Button,
+  Container,
+  Link,
+  Tab,
+  Typography,
+  Checkbox,
+  IconButton,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Snackbar,
+  Alert,
+  Tooltip,
 } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import HomeIcon from "@mui/icons-material/Home";
-import { Add } from "@mui/icons-material";
-import { StorageManager } from "@aws-amplify/ui-react-storage";
-import "@aws-amplify/ui-react/styles.css";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
+import CloseIcon from "@mui/icons-material/Close";
 import '@fontsource/roboto/700.css';
-// import styles from '../../styles/addNewPage.module.css';
+
+interface Row {
+  id: number;
+  name: string;
+  date: string;
+  size: string;
+  verified: boolean;
+}
+
+const initialRows: Row[] = [
+  { id: 1, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 2, name: 'Tito222222222.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 3, name: 'Titokjwdiuowiduouw.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 4, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 5, name: 'Titowluouou.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 6, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 7, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 8, name: 'Titoinouhoihnouho.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+];
 
 export default function MyDocuments() {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = useState<string>("2");
+  const [rows, setRows] = useState<Row[]>(initialRows);
+  const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>([]);
+  const [openInfoDialog, setOpenInfoDialog] = useState(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [selectedRow, setSelectedRow] = useState<Row | null>(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [verifiedFileName, setVerifiedFileName] = useState('');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
-  const renderEmptyState = (message : String) => (
-    <Box sx={{ textAlign: "center" }}>
-      <Box
-        component="img"
-        src="./images/docs.png"
-        alt="Documents img"
-        sx={{
-          width: "256.88px",
-          height: "272.83px",
-          mt: "110px",
-         
-          mx: "auto",
+  const handleVerifyFile = (id: number) => {
+    const row = rows.find(row => row.id === id);
+    if (row) {
+      setRows(rows.map(row => row.id === id ? { ...row, verified: true } : row));
+      setVerifiedFileName(row.name);
+      setSnackbarOpen(true);
+    }
+  };
 
-        }}
-      />
-      <Typography variant="h5" component="h1" gutterBottom color=" #323B4A"
-        sx={{
-          color: "#323B4A",
-          fontFamily: "Roboto",
-          fontSize: "16px",
-          fontWeight: "600",
-          lineHeight: "22px",
-          letterSpacing: "0.46px",
-           mb: 2,
-        }}
-      >
-        {message}
-      </Typography>
-      {/* <Button
-        variant="contained"
-        size="large"
-        startIcon={<Add />}
-        sx={{
-          width: "141px",
-          height: "42px",
-          mt: "16px",
-          mx: "auto",
-          
-          padding: "8px 22px",
-          backgroundColor: "#397EF3",
-        }}
-        onClick={() => {
-          document.getElementById("file_upload")?.click();
-        }}
-      >
-        ADD NEW
-      </Button> */}
+  const handleDeleteFile = (id: number) => {
+    setRows(rows.filter(row => row.id !== id));
+  };
 
-      {/* S3 */}
-      <Box sx={{ mt: 5, mb: 5 }}>
-        <StorageManager
-          acceptedFileTypes={["*"]}
-          path={({ identityId }) => `protected/${identityId}/`}
-          maxFileCount={5}
-          isResumable
-          components={{
-            FilePicker({ onClick }) {
-              return (
-                <Button variant="contained" id="file_upload" onClick={onClick} sx={{boxShadow:"none"}}>
-                  Upload Document
-                </Button>
-              );
-            },
-          }}
-        />
-      </Box>
-    </Box>
-  );
+  const handleVerifyAll = () => {
+    setRows(rows.map(row => ({ ...row, verified: true })));
+  };
+
+  const handleDeleteAll = () => {
+    setRows(rows.filter(row => !selectionModel.includes(row.id)));
+  };
+
+  const handleOpenInfoDialog = (row: Row) => {
+    setSelectedRow(row);
+    setOpenInfoDialog(true);
+  };
+
+  const handleOpenDeleteDialog = (row: Row) => {
+    setSelectedRow(row);
+    setOpenDeleteDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenInfoDialog(false);
+    setOpenDeleteDialog(false);
+  };
+
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setSnackbarOpen(false);
+  };
+
+  const columns = [
+    {
+      field: 'name',
+      headerName: 'Name',
+      width: 250,
+      renderCell: (params: any) => (
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          {params.row.name}
+          {!params.row.verified && (
+            <ErrorOutlineIcon sx={{ color: '#DC362E', ml: 1 }} />
+          )}
+        </Box>
+      ),
+    },
+    { field: 'date', headerName: 'Date Created', width: 200 },
+    { field: 'size', headerName: 'File Size', width: 150 },
+    {
+      field: 'actions',
+      headerName: '',
+      width: 250,
+      renderCell: (params: any) => (
+        <Box>
+          <Button onClick={() => handleVerifyFile(params.row.id)} variant="outlined">
+            <DoneAllIcon />
+            Verify File
+          </Button>
+          <Button onClick={() => handleOpenInfoDialog(params.row)} >
+            <InfoOutlinedIcon sx={{ color: '#65656B' }} />
+          </Button>
+          <Tooltip title="Move to trash" placement="top" arrow enterDelay={500} leaveDelay={200}
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  width: '100px',
+                  height: 'autopx',
+                  padding: '4px 8px',
+                  gap: '0px',
+                  borderRadius: 'var(--borderRadius)',
+                  opacity: '1',
+                  background: '#7E7E83',
+                  fontSize: '12px',
+
+                }
+              }
+            }}
+          >
+            <Button onClick={() => handleOpenDeleteDialog(params.row)} >
+              <DeleteOutlineOutlinedIcon sx={{ color: '#65656B' }} />
+            </Button>
+          </Tooltip>
+        </Box>
+      ),
+    },
+  ];
 
   return (
     <CommonLayout>
@@ -132,10 +195,117 @@ export default function MyDocuments() {
             <Tab label="IN PROGRESS" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1">{renderEmptyState("There Are No Verified Documents")}</TabPanel>
-        <TabPanel value="2">{renderEmptyState("There Are No Unverified Documents")}</TabPanel>
-        <TabPanel value="3"></TabPanel>
+        <Box
+          sx={{
+            width: '1140px',
+            height: '30px',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            mb: 2,
+          }}
+        >
+          <Box>
+            <Button onClick={handleVerifyAll} variant="outlined" startIcon={<DoneAllIcon />} sx={{ mr: 1 }}>
+              VERIFY ALL
+            </Button>
+            <Button onClick={handleDeleteAll} variant="outlined" startIcon={<DeleteOutlineOutlinedIcon />} color="error">
+              DELETE ALL
+            </Button>
+          </Box>
+        </Box>
+        <TabPanel value="1">
+          <DataGrid
+            rows={rows.filter(row => row.verified)}
+            columns={columns}
+            checkboxSelection
+            onRowSelectionModelChange={(newSelection) => setSelectionModel(newSelection)}
+            rowSelectionModel={selectionModel}
+          />
+        </TabPanel>
+        <TabPanel value="2">
+          <DataGrid
+            rows={rows.filter(row => !row.verified)}
+            columns={columns}
+            checkboxSelection
+            onRowSelectionModelChange={(newSelection) => setSelectionModel(newSelection)}
+            rowSelectionModel={selectionModel}
+          />
+        </TabPanel>
+        <TabPanel value="3">
+          <Typography>No documents in progress.</Typography>
+        </TabPanel>
       </TabContext>
+
+      <Dialog open={openInfoDialog} onClose={handleCloseDialog}>
+        <DialogTitle>File cannot be verified</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            File type jpeg is not a supported file. File types supported are PDF, Microsoft Word only.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog open={openDeleteDialog} onClose={handleCloseDialog}>
+        <DialogTitle>Delete forever?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            "{selectedRow?.name}" will be deleted forever. Want to delete it?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={() => {
+              if (selectedRow?.id !== undefined) {
+                handleDeleteFile(selectedRow.id);
+              }
+              handleCloseDialog();
+            }}
+            style={{ background: '#DC362E', color: 'white' }}
+          >
+            Yes, Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      >
+        <Alert
+          action={<></>}
+          iconMapping={{}}
+          severity="success"
+          sx={{
+            width: '370px',
+            height: 'auto',
+            background: '#0A9060',
+            color: '#FFFFFF',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="body2" sx={{ flex: 1 }}>
+            {verifiedFileName} is successfully verified
+          </Typography>
+          <Button size="small" sx={{ color: 'white' }}>
+            View File
+          </Button>
+          <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Alert>
+      </Snackbar>
     </CommonLayout>
   );
 }
