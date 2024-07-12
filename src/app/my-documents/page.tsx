@@ -20,6 +20,7 @@ import {
   Snackbar,
   Alert,
   Tooltip,
+  createMuiTheme,
 } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import HomeIcon from "@mui/icons-material/Home";
@@ -49,6 +50,7 @@ const initialRows: Row[] = [
   { id: 7, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
   { id: 8, name: 'Titoinouhoihnouho.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
 ];
+
 
 export default function MyDocuments() {
   const [value, setValue] = useState<string>("2");
@@ -107,60 +109,82 @@ export default function MyDocuments() {
     setSnackbarOpen(false);
   };
 
-  const columns = [
-    {
-      field: 'name',
-      headerName: 'Name',
-      width: 250,
-      renderCell: (params: any) => (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          {params.row.name}
-          {!params.row.verified && (
-            <ErrorOutlineIcon sx={{ color: '#DC362E', ml: 1 }} />
-          )}
-        </Box>
-      ),
-    },
-    { field: 'date', headerName: 'Date Created', width: 200 },
-    { field: 'size', headerName: 'File Size', width: 150 },
-    {
-      field: 'actions',
-      headerName: '',
-      width: 250,
-      renderCell: (params: any) => (
-        <Box>
-          <Button onClick={() => handleVerifyFile(params.row.id)} variant="outlined">
-            <DoneAllIcon />
-            Verify File
-          </Button>
-          <Button onClick={() => handleOpenInfoDialog(params.row)} >
-            <InfoOutlinedIcon sx={{ color: '#65656B' }} />
-          </Button>
-          <Tooltip title="Move to trash" placement="top" arrow enterDelay={500} leaveDelay={200}
-            componentsProps={{
-              tooltip: {
-                sx: {
-                  width: '100px',
-                  height: 'autopx',
-                  padding: '4px 8px',
-                  gap: '0px',
-                  borderRadius: 'var(--borderRadius)',
-                  opacity: '1',
-                  background: '#7E7E83',
-                  fontSize: '12px',
+//table 
+const columns = [
+  {
+    field: 'name',
+    headerName: 'Name',
+    width: 300,
+    headerClassName: 'header-spacing',
+    cellClassName: 'cell-spacing',
+    renderCell: (params: any) => (
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {params.row.name}
+        {!params.row.verified && (
+          <ErrorOutlineIcon sx={{ color: '#DC362E', ml: 1}} />
+        )}
+      </Box>
+    ),
+  },
 
-                }
+  // hover changes needed
+  {
+    field: 'date',
+    headerName: 'Date Created',
+    width: 250,
+    headerClassName: 'header-spacing',
+    cellClassName: 'cell-spacing',
+  },
+  {
+    field: 'size',
+    headerName: 'File Size',
+    width: 250,
+    headerClassName: 'header-spacing',
+    cellClassName: 'cell-spacing',
+  },
+  
+  {
+    field: 'actions',
+    headerName: '',
+    width: 250,
+    renderCell: (params: any) => (
+      <Box>
+        <Button onClick={() => handleVerifyFile(params.row.id)} variant="outlined">
+          <DoneAllIcon />
+          Verify File
+        </Button>
+        <Button onClick={() => handleOpenInfoDialog(params.row)} >
+          <InfoOutlinedIcon sx={{ color: '#65656B', width: '24px', height: '24px', boxShadow:'0' }} />
+        </Button>
+
+        {/* tooltip popup*/}
+        <Tooltip title="Move to trash" placement="top" arrow enterDelay={500} leaveDelay={200}
+          componentsProps={{
+            tooltip: {
+              sx: {
+                width: '100px',
+                height: 'auto',
+                padding: '4px 8px',
+                opacity: '1',
+                background: '#7E7E83',
+                fontSize: '12px',
               }
-            }}
-          >
-            <Button onClick={() => handleOpenDeleteDialog(params.row)} >
-              <DeleteOutlineOutlinedIcon sx={{ color: '#65656B' }} />
-            </Button>
-          </Tooltip>
-        </Box>
-      ),
-    },
-  ];
+            }
+          }}
+        >
+          <Button onClick={() => handleOpenDeleteDialog(params.row)} >
+            <DeleteOutlineOutlinedIcon sx={{
+              color: '#65656B',
+              width: '24px',
+              height: '24px',
+            }} />
+          </Button>
+        </Tooltip>
+      </Box>
+    ),
+  },
+];
+
 
   return (
     <CommonLayout>
@@ -223,14 +247,17 @@ export default function MyDocuments() {
             rowSelectionModel={selectionModel}
           />
         </TabPanel>
+
+        {/*  unverified*/}
         <TabPanel value="2">
-          <DataGrid
-            rows={rows.filter(row => !row.verified)}
-            columns={columns}
-            checkboxSelection
-            onRowSelectionModelChange={(newSelection) => setSelectionModel(newSelection)}
-            rowSelectionModel={selectionModel}
-          />
+        <DataGrid
+  rows={rows.filter(row => !row.verified)}
+  columns={columns}
+  checkboxSelection
+  onRowSelectionModelChange={(newSelection) => setSelectionModel(newSelection)}
+  rowSelectionModel={selectionModel}
+  style={{ width: '1140px', height: '352px' }} 
+/>
         </TabPanel>
         <TabPanel value="3">
           <Typography>No documents in progress.</Typography>
