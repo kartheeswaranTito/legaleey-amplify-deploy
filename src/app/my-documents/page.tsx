@@ -48,7 +48,7 @@ const initialRows: Row[] = [
   { id: 5, name: 'Titowluouou.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
   { id: 6, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
   { id: 7, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
-  { id: 8, name: 'Titoinouhoihnouho.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
+  { id: 8, name: 'Titoinouhoihnouho0diysoduhosudouhouh.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false },
 ];
 
 
@@ -111,6 +111,7 @@ export default function MyDocuments() {
     setSnackbarOpen(false);
   };
 
+ //table 
   const columns = [
     {
       field: 'name',
@@ -127,6 +128,8 @@ export default function MyDocuments() {
         </Box>
       ),
     },
+
+     // DEmo
     {
       field: 'date',
       headerName: 'Date Created',
@@ -154,12 +157,15 @@ export default function MyDocuments() {
           <Button onClick={() => handleOpenInfoDialog(params.row)} >
             <InfoOutlinedIcon sx={{ color: '#65656B', width: '24px', height: '24px', boxShadow:'0' }} />
           </Button>
+
+          {/* TOOLTIP */}
           <Tooltip title="Move to trash" placement="top" arrow enterDelay={500} leaveDelay={200}
             componentsProps={{
               tooltip: {
                 sx: {
-                  width: '100px',
-                  height: 'auto',
+                  width: '90px',
+                  height: '22px',
+                  borderRadius:'4px',
                   padding: '4px 8px',
                   opacity: '1',
                   background: '#7E7E83',
@@ -241,6 +247,8 @@ export default function MyDocuments() {
             rowSelectionModel={selectionModel}
           />
         </TabPanel>
+
+        {/*UNVERIFIED  */}
         <TabPanel value="2">
           <DataGrid
             rows={rows.filter(row => !row.verified)}
@@ -256,10 +264,28 @@ export default function MyDocuments() {
         </TabPanel>
       </TabContext>
 
-      <Dialog open={openInfoDialog} onClose={handleCloseDialog}>
+       {/* DIALOG INFO */}
+      <Dialog open={openInfoDialog} onClose={handleCloseDialog} 
+       PaperProps={{
+          style: {
+            width: '444px',
+            height: '165px',
+            borderRadius: '8px',
+          },
+        }}>
         <DialogTitle>File cannot be verified</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          <DialogContentText
+          sx={{
+            fontFamily: 'Roboto',
+            fontSize: '12px',
+            fontWeight: 400,
+            lineHeight: '19.92px',
+            letterSpacing: '0.4px',
+            textAlign: 'left',
+
+          }}
+          >
             File type jpeg is not a supported file. File types supported are PDF, Microsoft Word only.
           </DialogContentText>
         </DialogContent>
@@ -270,13 +296,35 @@ export default function MyDocuments() {
         </DialogActions>
       </Dialog>
 
-      <Dialog open={openDeleteDialog} onClose={handleCloseDialog}>
+
+       {/* DIALOG DELETE */}
+       <Dialog
+        open={openDeleteDialog}
+        onClose={handleCloseDialog}
+        PaperProps={{
+          style: {
+            width: '444px',
+            height: '154px',
+            borderRadius: '8px',
+          },
+        }}
+      >
         <DialogTitle>Delete forever?</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            "{selectedRow?.name}" will be deleted forever. Want to delete it?
-          </DialogContentText>
-        </DialogContent>
+  <DialogContentText
+    sx={{
+      fontFamily: 'Roboto',
+      fontSize: '12px',
+      fontWeight: 400,
+      lineHeight: '19.92px',
+      letterSpacing: '0.4px',
+      textAlign: 'left',
+    }}
+  >
+    "{selectedRow?.name}" will be deleted forever. Want to delete it?
+  </DialogContentText>
+</DialogContent>
+
         <DialogActions>
           <Button onClick={handleCloseDialog} color="primary">
             Cancel
@@ -295,37 +343,99 @@ export default function MyDocuments() {
         </DialogActions>
       </Dialog>
 
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+{/* Red snackbar 
+<Snackbar
+      open={snackbarOpen}
+      autoHideDuration={6000}
+      onClose={}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+    >
+      <Alert
+        severity="error"
+        sx={{
+          width: '400px',
+          height: 'auto',
+          borderRadius: '4px',
+          background: '#D32F2F',
+          color: '#FFFFFF',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
       >
-        <Alert
-          action={<></>}
-          iconMapping={{}}
-          severity="success"
+        <div style={{ flexGrow: 1 }}>
+          <Typography variant="body2">
+            {verifiedFileName} cannot be verified
+          </Typography>
+          <Typography variant="caption">
+            File type jpeg is not supported file. File types supported are PDF, Microsoft Word only
+          </Typography>
+        </div>
+        <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
+          <CloseIcon fontSize="small" />
+        </IconButton>
+      </Alert>
+    </Snackbar>
+*/}
+
+ {/* Green snackbar  */}
+
+    <Snackbar
+      open={snackbarOpen}
+      autoHideDuration={6000}
+      onClose={handleCloseSnackbar}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+    >
+      <Alert
+        icon={false}
+        severity="success"
+        sx={{
+          width: '370px',
+          height: 'auto',
+          borderRadius: '4px',
+          background: '#0A9060',
+          color: '#FFFFFF',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '6px 16px',
+          gap: '3px',
+        }}
+      >
+        <Box
           sx={{
-            width: '370px',
-            height: 'auto',
-            background: '#0A9060',
-            color: '#FFFFFF',
+            flexGrow: 1,
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
         >
-          <Typography variant="body2" sx={{ flex: 1 }}>
+          <Typography variant="body2" >
             {verifiedFileName} is successfully verified
           </Typography>
-          <Button size="small" sx={{ color: 'white' }}>
+          <Button
+            size="small"
+            sx={{
+              color: 'white',
+              width: '68px',
+              height: '24px',
+              padding: '1px 2px',
+              ml: 2,
+              minWidth: '68px',
+              whiteSpace: 'nowrap',
+            }}
+          >
             View File
           </Button>
           <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
             <CloseIcon fontSize="small" />
           </IconButton>
-        </Alert>
-      </Snackbar>
+        </Box>
+      </Alert>
+    </Snackbar>
+  
+
+
     </CommonLayout>
   );
 }
