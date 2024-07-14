@@ -148,6 +148,7 @@ export default function MyDocuments() {
       field: 'actions',
       headerName: '',
       width: 250,
+      disableColumnMenu: true,
       renderCell: (params: any) => (
         <Box>
           <Button onClick={() => handleVerifyFile(params.row.id)} variant="outlined">
