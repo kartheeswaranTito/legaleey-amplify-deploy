@@ -31,7 +31,8 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
 import CloseIcon from "@mui/icons-material/Close";
 import '@fontsource/roboto/700.css';
-
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/400.css';
 interface Row {
   id: number;
   name: string;
@@ -119,8 +120,9 @@ export default function MyDocuments() {
       width: 300,
       headerClassName: 'header-spacing',
       cellClassName: 'cell-spacing',
+      
       renderCell: (params: any) => (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', fontWeight:'500' }}>
           {params.row.name}
           {!params.row.verified && (
             <ErrorOutlineIcon sx={{ color: '#DC362E', ml: 1}} />
@@ -137,6 +139,26 @@ export default function MyDocuments() {
       headerClassName: 'header-spacing',
       cellClassName: 'cell-spacing',
     },
+    // {
+    //   field: 'date',
+    //   headerName: 'Date Created',
+    //   width: 250,
+    //   headerClassName: 'header-spacing',
+    //   cellClassName: 'cell-spacing',
+    //   renderCell: (params: any) => (
+    //     <Typography
+    //       sx={{
+    //         fontFamily: 'Roboto',
+    //         fontSize: '14px',
+    //         fontWeight: 400,
+    //         lineHeight: '19px',
+    //          textAlign: 'left'
+    //       }}
+    //     >
+    //       {params.row.date}
+    //     </Typography>
+    //   ),
+    // },
     {
       field: 'size',
       headerName: 'File Size',
