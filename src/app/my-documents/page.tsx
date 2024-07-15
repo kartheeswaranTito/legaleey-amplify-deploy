@@ -320,7 +320,7 @@ export default function MyDocuments() {
       </Dialog>
 
 
-       {/* DIALOG DELETE */}
+       {/* DIALOG DELETE */} 
        <Dialog
         open={openDeleteDialog}
         onClose={handleCloseDialog}
@@ -456,9 +456,6 @@ export default function MyDocuments() {
         </Box>
       </Alert>
     </Snackbar>
-  
-
-
     </CommonLayout>
   );
 }
