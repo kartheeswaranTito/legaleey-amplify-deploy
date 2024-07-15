@@ -1,5 +1,5 @@
 "use client";
-
+import * as React from "react";
 import CommonLayout from "@/components/CommonLayout";
 import { Box, Breadcrumbs, Link, Typography, Button } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
@@ -7,9 +7,9 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import ArticleIcon from "@mui/icons-material/Article";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RestoreIcon from "@mui/icons-material/Restore";
-
+import Modal from "@mui/material/Modal";
 import { DataGrid, GridRowSelectionModel } from "@mui/x-data-grid";
-import { Restore } from "@mui/icons-material";
+import { PanoramaSharp, Restore } from "@mui/icons-material";
 
 // sample data
 interface Row {
@@ -111,7 +111,22 @@ const getFileIcon = (fileType: string) => {
 	}
 };
 
+const style = {
+	position: "absolute" as "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	width: 400,
+	bgcolor: "background.paper",
+
+	boxShadow: 24,
+	p: 4,
+};
+
 export default function Trash() {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 	const columns = [
 		{
 			field: "name",
@@ -176,7 +191,7 @@ export default function Trash() {
 						<Button>
 							<RestoreIcon />
 						</Button>
-						<Button>
+						<Button onClick={handleOpen}>
 							<DeleteOutlineIcon />
 						</Button>
 					</Box>
@@ -245,10 +260,33 @@ export default function Trash() {
 					</Typography>
 				)}
 			</Box>
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby='modal-modal-title'
+				aria-describedby='modal-modal-description'
+			>
+				<Box sx={style}>
+					<Typography
+						id='modal-modal-title'
+						variant='h5'
+						component='h2'
+						sx={{ fontWeight: "Bold" }}
+					>
+						Delete Forever?
+					</Typography>
+					<Typography
+						id='modal-modal-description'
+						sx={{ mt: 2 }}
+					>
+						File will be deleted forever and cannot be restored
+					</Typography>
+					<Box sx={{ display: "flex", ml: "80px" }}>
+						<Button onClick={handleClose}>Cancel</Button>
+						<Button variant='contained'>Delete Forever</Button>
+					</Box>
+				</Box>
+			</Modal>
 		</CommonLayout>
 	);
-}
-
-{
-	/*  */
 }
