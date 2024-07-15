@@ -250,7 +250,7 @@ export default function Trash() {
 					<DataGrid
 						rows={initialRows}
 						columns={columns}
-						style={{ width: "1140px", height: "352px" }}
+						style={{ width: "1140px", height: "500px" }}
 					/>
 				) : (
 					<Typography
@@ -274,7 +274,7 @@ export default function Trash() {
 						id='modal-modal-title'
 						variant='h5'
 						component='h2'
-						sx={{ fontWeight: "Bold" }}
+						sx={{ fontWeight: "Bold", color: "#000" }}
 					>
 						Delete Forever?
 					</Typography>
@@ -301,7 +301,7 @@ export default function Trash() {
 						id='modal-modal-title'
 						variant='h5'
 						component='h2'
-						sx={{ fontWeight: "Bold" }}
+						sx={{ fontWeight: "Bold", color: "#000" }}
 					>
 						Delete Forever?
 					</Typography>
