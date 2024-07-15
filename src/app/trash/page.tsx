@@ -97,6 +97,20 @@ const initialRows: Row[] = [
 	},
 ];
 
+const getFileIcon = (fileType: string) => {
+	switch (fileType) {
+		case "pdf":
+			return "/fileIcons/pdf-Icon.png";
+		case "docx":
+			return "/fileIcons/word-Icon.png";
+		case "Folder":
+			return "/fileIcons/folder-Icon.png";
+
+		default:
+			return "/fileIcons/folder-Icon.png";
+	}
+};
+
 export default function Trash() {
 	const columns = [
 		{
@@ -115,7 +129,7 @@ export default function Trash() {
 								mt: "10px",
 							}}
 						>
-							<PictureAsPdfIcon />
+							<img src={getFileIcon(params.row.type)} />
 							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
 						</Box>
 					);
