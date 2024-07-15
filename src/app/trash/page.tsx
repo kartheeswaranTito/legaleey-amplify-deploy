@@ -116,7 +116,7 @@ const style = {
 	top: "50%",
 	left: "50%",
 	transform: "translate(-50%, -50%)",
-	width: 400,
+	width: 450,
 	bgcolor: "background.paper",
 
 	boxShadow: 24,
@@ -124,9 +124,12 @@ const style = {
 };
 
 export default function Trash() {
-	const [open, setOpen] = React.useState(false);
-	const handleOpen = () => setOpen(true);
-	const handleClose = () => setOpen(false);
+	const [open1, setOpen1] = React.useState(false);
+	const [open2, setOpen2] = React.useState(false);
+	const handleOpen1 = () => setOpen1(true);
+	const handleClose1 = () => setOpen1(false);
+	const handleOpen2 = () => setOpen2(true);
+	const handleClose2 = () => setOpen2(false);
 	const columns = [
 		{
 			field: "name",
@@ -191,7 +194,7 @@ export default function Trash() {
 						<Button>
 							<RestoreIcon />
 						</Button>
-						<Button onClick={handleOpen}>
+						<Button onClick={handleOpen1}>
 							<DeleteOutlineIcon />
 						</Button>
 					</Box>
@@ -239,7 +242,7 @@ export default function Trash() {
 				<Typography sx={{ alignSelf: "center" }}>
 					Items in trash will be deleted after 30 days
 				</Typography>
-				<Button>EMPTY TRASH</Button>
+				<Button onClick={handleOpen2}>EMPTY TRASH</Button>
 			</Box>
 
 			<Box sx={{ mt: "5px", textAlign: "center" }}>
@@ -261,8 +264,8 @@ export default function Trash() {
 				)}
 			</Box>
 			<Modal
-				open={open}
-				onClose={handleClose}
+				open={open1}
+				onClose={handleClose1}
 				aria-labelledby='modal-modal-title'
 				aria-describedby='modal-modal-description'
 			>
@@ -277,13 +280,46 @@ export default function Trash() {
 					</Typography>
 					<Typography
 						id='modal-modal-description'
-						sx={{ mt: 2 }}
+						sx={{ mt: 2, mb: "10px" }}
 					>
 						File will be deleted forever and cannot be restored
 					</Typography>
-					<Box sx={{ display: "flex", ml: "80px" }}>
-						<Button onClick={handleClose}>Cancel</Button>
+					<Box sx={{ display: "flex", ml: "130px" }}>
+						<Button onClick={handleClose1}>Cancel</Button>
 						<Button variant='contained'>Delete Forever</Button>
+					</Box>
+				</Box>
+			</Modal>
+			<Modal
+				open={open2}
+				onClose={handleClose2}
+				aria-labelledby='modal-modal-title'
+				aria-describedby='modal-modal-description'
+			>
+				<Box sx={style}>
+					<Typography
+						id='modal-modal-title'
+						variant='h5'
+						component='h2'
+						sx={{ fontWeight: "Bold" }}
+					>
+						Delete Forever?
+					</Typography>
+					<Typography
+						id='modal-modal-description'
+						sx={{ mt: 2, mb: "10px" }}
+					>
+						All items in the trash will be deleted forever and cannot be
+						restored
+					</Typography>
+					<Box sx={{ display: "flex", ml: "130px" }}>
+						<Button onClick={handleClose2}>Cancel</Button>
+						<Button
+							variant='contained'
+							color='error'
+						>
+							Delete Forever
+						</Button>
 					</Box>
 				</Box>
 			</Modal>
