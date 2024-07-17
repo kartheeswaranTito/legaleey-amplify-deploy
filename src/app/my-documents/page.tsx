@@ -43,12 +43,12 @@ export default function MyDocuments() {
   };
 
   const data = [
-    { id: 1, file_name: "abcyeui", uploaded_date: "21/02/2024", file_type: "pdf", file_size: "180 MB" },
-    { id: 2, file_name: "defuyuyi", uploaded_date: "21/02/2024", file_type: "docx", file_size: "10 MB" },
-    { id: 3, file_name: "ghyuiyi", uploaded_date: "25/02/2024", file_type: "Folder", file_size: "-" },
-    { id: 4, file_name: "klmtyryry", uploaded_date: "21/02/2024", file_type: "docx", file_size: "200 MB" },
-    { id: 5, file_name: "klmyuu", uploaded_date: "27/02/2024", file_type: "Folder", file_size: "-" },
-    { id: 6, file_name: "klmrere", uploaded_date: "23/02/2024", file_type: "pdf", file_size: "200 MB" },
+    { id: 1, file_name: "Sample 1", uploaded_date: "21/02/2024", file_type: "pdf", file_size: "180 MB" },
+    { id: 2, file_name: "File1", uploaded_date: "21/02/2024", file_type: "docx", file_size: "10 MB" },
+    { id: 3, file_name: "Sample folder 1", uploaded_date: "25/02/2024", file_type: "Folder", file_size: "-" },
+    { id: 4, file_name: "File 2", uploaded_date: "21/02/2024", file_type: "docx", file_size: "200 MB" },
+    { id: 5, file_name: "Sample folder 2", uploaded_date: "27/02/2024", file_type: "Folder", file_size: "-" },
+    { id: 6, file_name: "Sample 2", uploaded_date: "23/02/2024", file_type: "pdf", file_size: "200 MB" },
   ];
 
   const getFileIcon = (fileType: string) => {
@@ -147,11 +147,19 @@ export default function MyDocuments() {
         </MenuItem> */}
         <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
           <RemoveRedEyeOutlinedIcon style={{ marginRight: 8 }} />
-          Preview
+          Open
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
+          <FileDownloadOutlinedIcon style={{ marginRight: 8 }} />
+          Download
         </MenuItem>
         <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
           <InfoOutlinedIcon style={{ marginRight: 8 }} />
           Info
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
+          <DeleteOutlineOutlinedIcon style={{ marginRight: 8 }} />
+          Delete
         </MenuItem>
         {/* <hr style={{ borderTop: '1px solid #7E7E83', margin: '8px 0' }} />  */}
         {/* <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
@@ -162,13 +170,10 @@ export default function MyDocuments() {
           <ContentCopyIcon style={{ marginRight: 8 }} />
           Make a copy
         </MenuItem> */}
-        <MenuItem onClick={handleClose} style={{ color: '#7E7E83' }}>
-          <FileDownloadOutlinedIcon style={{ marginRight: 8 }} />
-          Download
-        </MenuItem>
+       
       </Menu>
     </div>
-    );
+    );  
   };
 
   return (
@@ -190,7 +195,7 @@ export default function MyDocuments() {
           My Documents
         </Link>
       </Breadcrumbs>
-      <Typography variant="h4" component="h2" sx={{ color: '#393940' }} >
+      <Typography variant="h4" component="h2" className="legaleey-heading" >
         My Documents
       </Typography>
       <TabContext value={value}>
