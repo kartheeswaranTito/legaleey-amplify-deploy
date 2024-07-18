@@ -1,3 +1,5 @@
+
+
 import CommonLayout_Home from "@/components/CommonLayout_Home";
 import {
   Box,
@@ -21,28 +23,30 @@ import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 export default function Home() {
   return (
     <CommonLayout_Home>
-      <Container maxWidth="lg" sx={{ padding: 2 }}>
-        <Box
-          sx={{
-            textAlign: "center",
-            background: "#F2F4F7",
-            width: "100%",
-            maxWidth: "1142px",
-            height: "164px",
-            margin: "24px auto",
-            padding: "32px 26px",
-            gap: "8px",
-            borderRadius: "20px",
-            border: "1px solid transparent",
-            opacity: 1,
-          }}
-        >
+      <Container maxWidth="md" sx={{ padding: 2 }}>
+      <Box
+      sx={{
+        background: "#F2F4F7",
+        textAlign: "center",
+        width: "900px",
+        
+        height: "164px",
+        top: "24px",
+        left: "21px",
+        padding: "32px 26px 32px 26px",
+        gap: "8px",
+        borderRadius: "20px",
+        border: "1px solid transparent",
+        opacity: 1
+
+      }}
+    >
           <Typography
             sx={{
               fontSize: "30px",
               fontWeight: "700",
               lineHeight: "35.16px",
-              textAlign: "center",
+              textAlign: "center", 
             }}
           >
             Welcome to your LEGALEEY AI search copilot.
@@ -56,25 +60,22 @@ export default function Home() {
               style: { borderRadius: 25, backgroundColor: "#FFFF" },
             }}
             sx={{
-              width: "558px",
+              width: "558px",     
               height: "50px",
-              margin: "13px auto 0",
+              padding: "13px 17px",
               gap: "8px",
               borderRadius: "28px 0px 0px 0px",
               border: "1px solid transparent",
             }}
           />
         </Box>
-      </Container>
 
-      <Container maxWidth="md">
         <Typography
           sx={{
             fontSize: "30px",
             fontWeight: "600",
-            textAlign: "center",
+            textAlign: "center", 
             mt: 10,
-            mb:2,
           }}
         >
           Welcome Vikas! Let's get started.
@@ -84,14 +85,15 @@ export default function Home() {
           <Grid item xs={12}>
             <DocumentCard
               title="There are no documents"
-              description="Start your AI copilot search journey with LEGALEEY by uploading documents."
+              description="Start your AI copilot search journey with
+               LEGALEEY by uploading documents."
               buttonText="UPLOAD DOCUMENT"
               icon={
                 <InsertDriveFileOutlinedIcon
                   sx={{
                     fontSize: 50,
                     color: "#1a73e8",
-                    backgroundColor: "#F2F4F7",
+                    backgroundColor: " #F2F4F7",
                     boxShadow:'none',
                   
                   }}
@@ -110,7 +112,7 @@ export default function Home() {
                   sx={{
                     fontSize: 50,
                     color: "#1a73e8",
-                    backgroundColor: "#F2F4F7",
+                    backgroundColor: " #F2F4F7",
                     borderRight: "13px",
                   }}
                 />
@@ -127,7 +129,7 @@ export default function Home() {
             sx={{
               display: "inline-flex",
               alignItems: "center",
-              backgroundColor: "#EBF2FE",
+              backgroundColor: "#e3f2fd",
               padding: "10px 20px",
               gap: "8px",
               borderRadius: "8px ",
@@ -137,7 +139,9 @@ export default function Home() {
               color: "#1a73e8",
               fontWeight: "bold",
               textDecoration: "none",
-              justifyContent: "center",
+              width: '100%',
+              justifyContent: 'center',
+           
             }}
           >
             <CardGiftcardIcon sx={{ mr: 1 }} />

@@ -42,7 +42,6 @@ import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
 import CloseIcon from "@mui/icons-material/Close";
-import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/400.css';
 interface Row {
@@ -82,7 +81,7 @@ const getFileIcon = (fileType: string) => {
   };
 
 export default function MyDocuments() {
-  const [value, setValue] = React.useState("1");
+	const [value, setValue] = React.useState("1");
   const [view, setView] = React.useState<"table" | "grid">("table");
   const [value, setValue] = useState<string>("2");
   const [rows, setRows] = useState<Row[]>(initialRows);
@@ -93,9 +92,9 @@ export default function MyDocuments() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [verifiedFileName, setVerifiedFileName] = useState('');
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
+	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+		setValue(newValue);
+	};
 
   const handleViewToggle = (newView: "table" | "grid") => {
     setView(newView);
