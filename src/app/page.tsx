@@ -6,7 +6,8 @@ import awsExports from './../aws-exports';
 import { Amplify } from 'aws-amplify';
 import { Box, TextField } from '@mui/material';
 import Home from '@/app/home/page';
-import './../styles/custom.scss';
+
+
 import { I18n } from 'aws-amplify/utils';
 
 Amplify.configure(awsExports);
