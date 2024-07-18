@@ -92,6 +92,8 @@ export default function Home() {
                     fontSize: 50,
                     color: "#1a73e8",
                     backgroundColor: "#F2F4F7",
+                    boxShadow:'none',
+                  
                   }}
                 />
               }
@@ -129,7 +131,7 @@ export default function Home() {
               padding: "10px 20px",
               gap: "8px",
               borderRadius: "8px ",
-              border: "2px dashed #397EF3", // Changed to dashed border
+              border: "2px dashed #397EF3", 
               width: "850px",
               height: "58px",
               color: "#1a73e8",
