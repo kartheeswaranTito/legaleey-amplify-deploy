@@ -33,6 +33,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/400.css';
+
 interface Row {
   id: number;
   name: string;
@@ -478,42 +479,117 @@ export default function MyDocuments() {
   );
 }
 
+// // MyDocuments.tsx
 
+// // "use client";
+// // import React, { useState } from 'react';
+// // import {
+// //   Box,
+// //   Typography,
+// //   Breadcrumbs,
+// //   Link as MuiLink,
+// // } from "@mui/material";
+// // import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+// // import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+// // import UnverifiedDocuments from './UnverifiedDocuments';
+
+// // const MyDocuments: React.FC = () => {
+// //   const [rows, setRows] = useState([
+// //     { id: 1, name: 'document1.pdf', date: '2023-06-01', size: '2MB', verified: false, type: 'pdf' },
+// //     { id: 2, name: 'document2.docx', date: '2023-06-02', size: '3MB', verified: true, type: 'docx' },
+// //     { id: 3, name: 'document3.pdf', date: '2023-06-03', size: '4MB', verified: false, type: 'pdf' },
+// //     // Add more rows as needed
+// //   ]);
+
+// //   return (
+// //     <Box
+// //       sx={{
+// //         margin: '40px',
+// //         fontFamily: 'Roboto',
+// //         fontWeight: 500,
+// //         fontSize: '14px',
+// //         lineHeight: '24px',
+// //         color: '#6B6B6B',
+// //         height: '100%',
+// //         width: '100%',
+// //       }}
+// //     >
+// //       <Typography
+// //         sx={{
+// //           fontWeight: 500,
+// //           fontSize: '18px',
+// //           lineHeight: '28px',
+// //           marginBottom: '5px',
+// //           color: '#4C4C4C',
+// //         }}
+// //       >
+// //         My Documents
+// //       </Typography>
+// //       <Breadcrumbs
+// //         separator={<NavigateNextIcon sx={{ fontSize: '16px' }} />}
+// //         aria-label="breadcrumb"
+// //         sx={{
+// //           fontSize: '12px',
+// //           lineHeight: '16px',
+// //           marginBottom: '16px',
+// //           color: '#808080',
+// //         }}
+// //       >
+// //         <MuiLink underline="hover" color="inherit" href="/">
+// //           My Files
+// //         </MuiLink>
+// //         <Typography color="text.primary">Documents</Typography>
+// //       </Breadcrumbs>
+
+// //       <Box
+// //         sx={{
+// //           marginTop: '20px',
+// //           display: 'flex',
+// //           justifyContent: 'space-between',
+// //         }}
+// //       >
+// //         <Typography
+// //           sx={{
+// //             fontWeight: 400,
+// //             fontSize: '16px',
+// //             lineHeight: '20px',
+// //             color: '#4C4C4C',
+// //           }}
+// //         >
+// //           Verified Documents
+// //         </Typography>
+// //         <VerifiedUserIcon />
+// //       </Box>
+
+// //       <Box
+// //         sx={{
+// //           height: '352px',
+// //           marginTop: '12px',
+// //         }}
+// //       >
+// //         {/* Replace this with UnverifiedDocuments component */}
+// //         <UnverifiedDocuments rows={rows} setRows={setRows} />
+// //       </Box>
+// //     </Box>
+// //   );
+// // };
+
+// // export default MyDocuments;
+
+
+// // MyDocuments.tsx
 
 // "use client";
 // import React, { useState } from 'react';
-// import CommonLayout from "@/components/CommonLayout";
 // import {
 //   Box,
-//   Breadcrumbs,
-//   Button,
-//   Link,
-//   Tab,
 //   Typography,
-//   Checkbox,
-//   IconButton,
-//   Dialog,
-//   DialogActions,
-//   DialogContent,
-//   DialogContentText,
-//   DialogTitle,
-//   Snackbar,
-//   Alert,
-//   Tooltip,
+//   Breadcrumbs,
+//   Link as MuiLink,
 // } from "@mui/material";
-// import { TabContext, TabList, TabPanel } from "@mui/lab";
-// import HomeIcon from "@mui/icons-material/Home";
-// import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-// import DoneAllIcon from '@mui/icons-material/DoneAll';
-// import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-// import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-// import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-// import DescriptionIcon from '@mui/icons-material/Description';
-// import { DataGrid, GridRowSelectionModel } from '@mui/x-data-grid';
-// import CloseIcon from "@mui/icons-material/Close";
-// import '@fontsource/roboto/700.css';
-// import '@fontsource/roboto/500.css';
-// import '@fontsource/roboto/400.css';
+// import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+// import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+// import UnverifiedDocuments from './UnverifiedDocuments';
 
 // interface Row {
 //   id: number;
@@ -521,279 +597,91 @@ export default function MyDocuments() {
 //   date: string;
 //   size: string;
 //   verified: boolean;
+//   type: string;
 // }
 
-// const initialRows: Row[] = [
-//   { id: 1, name: 'Legal_Contract.pdf', date: 'June 21, 2022', size: '20.00 MB', verified: false },
-//   { id: 2, name: 'AmazonNDA.docx', date: 'June 21, 2022', size: '30.00 MB', verified: false },
-//   { id: 3, name: 'AmazonNDA.docx', date: 'June 21, 2022', size: '22.00 MB', verified: false },
-//   { id: 4, name: 'MicrosoftLegalContracts.pdf', date: 'June 21, 2022', size: '100.00 MB', verified: false },
-//   { id: 5, name: 'ContractsforMerger.pdf', date: 'June 21, 2022', size: '100.00 MB', verified: false },
-//   { id: 6, name: 'CompanyMergers.pdf', date: 'June 21, 2022', size: '100.00 MB', verified: false },
-// ];
+// const MyDocuments: React.FC = () => {
+//   const [rows, setRows] = useState<Row[]>([
+  
 
-// export default function MyDocuments() {
-//   const [value, setValue] = useState<string>("2");
-//   const [rows, setRows] = useState<Row[]>(initialRows);
-//   const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>([]);
-//   const [openInfoDialog, setOpenInfoDialog] = useState(false);
-//   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-//   const [selectedRow, setSelectedRow] = useState<Row | null>(null);
-//   const [snackbarOpen, setSnackbarOpen] = useState(false);
-//   const [verifiedFileName, setVerifiedFileName] = useState('');
-
-//   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-//     setValue(newValue);
-//   };
-
-//   const handleVerifyFile = (id: number) => {
-//     const row = rows.find(row => row.id === id);
-//     if (row) {
-//       setRows(rows.map(row => row.id === id ? { ...row, verified: true } : row));
-//       setVerifiedFileName(row.name);
-//       setSnackbarOpen(true);
-//     }
-//   };
-
-//   const handleDeleteFile = (id: number) => {
-//     setRows(rows.filter(row => row.id !== id));
-//   };
-
-//   const handleVerifyAll = () => {
-//     setRows([]); 
-//     setSelectionModel([]); 
-//   };
-
-//   const handleDeleteAll = () => {
-//     setRows([]);  
-//     setSelectionModel([]);  
-//   };
-
-//   const handleOpenInfoDialog = (row: Row) => {
-//     setSelectedRow(row);
-//     setOpenInfoDialog(true);
-//   };
-
-//   const handleOpenDeleteDialog = (row: Row) => {
-//     setSelectedRow(row);
-//     setOpenDeleteDialog(true);
-//   };
-
-//   const handleCloseDialog = () => {
-//     setOpenInfoDialog(false);
-//     setOpenDeleteDialog(false);
-//   };
-
-//   const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
-//     if (reason === 'clickaway') {
-//       return;
-//     }
-//     setSnackbarOpen(false);
-//   };
-
-//   const getFileIcon = (fileName: string) => {
-//     const extension = fileName.split('.').pop()?.toLowerCase();
-//     switch (extension) {
-//       case 'pdf':
-//         return <PictureAsPdfIcon sx={{ color: '#DC362E', mr: 1 }} />;
-//       case 'doc':
-//       case 'docx':
-//         return <DescriptionIcon sx={{ color: '#3F51B5', mr: 1 }} />;
-//       default:
-//         return null;
-//     }
-//   };
-
-//   const columns = [
-//     {
-//       field: 'name',
-//       headerName: 'Name',
-//       width: 300,
-//       headerClassName: 'header-spacing',
-//       cellClassName: 'cell-spacing',
-//       renderCell: (params: any) => (
-//         <Box sx={{ display: 'flex', alignItems: 'center', fontWeight:'500' }}>
-//           {getFileIcon(params.row.name)}
-//           {params.row.name}
-//           {!params.row.verified && (
-//             <ErrorOutlineIcon sx={{ color: '#DC362E', ml: 1}} />
-//           )}
-//         </Box>
-//       ),
-//     },
-//     {
-//       field: 'date',
-//       headerName: 'Date Created',
-//       width: 250,
-//       headerClassName: 'header-spacing',
-//       cellClassName: 'cell-spacing',
-//     },
-//     {
-//       field: 'size',
-//       headerName: 'File Size',
-//       width: 250,
-//       headerClassName: 'header-spacing',
-//       cellClassName: 'cell-spacing',
-//     },
-//     {
-//       field: 'actions',
-//       headerName: '',
-//       width: 250,
-//       disableColumnMenu: true,
-//       renderCell: (params: any) => (
-//         <Box>
-//           <Button onClick={() => handleVerifyFile(params.row.id)} variant="outlined">
-//             <DoneAllIcon />
-//             Verify File
-//           </Button>
-//           <Button onClick={() => handleOpenInfoDialog(params.row)} >
-//             <InfoOutlinedIcon sx={{ color: '#65656B', width: '24px', height: '24px', boxShadow:'0' }} />
-//           </Button>
-
-//           <Tooltip title="Move to trash" placement="top" arrow enterDelay={500} leaveDelay={200}
-//             componentsProps={{
-//               tooltip: {
-//                 sx: {
-//                   width: '90px',
-//                   height: '22px',
-//                   borderRadius:'4px',
-//                   padding: '4px 8px',
-//                   opacity: '1',
-//                   background: '#7E7E83',
-//                   fontSize: '12px',
-//                 }
-//               }
-//             }}
-//           >
-//             <Button onClick={() => handleOpenDeleteDialog(params.row)} >
-//               <DeleteOutlineOutlinedIcon sx={{
-//                 color: '#65656B',
-//                 width: '24px',
-//                 height: '24px',
-//               }} />
-//             </Button>
-//           </Tooltip>
-//         </Box>
-//       ),
-//     },
-//   ];
+//     { id: 1, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false , type: 'pdf'},
+//       { id: 2, name: 'Tito222222222.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false,type: 'docx' },
+//       { id: 3, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false , type: 'pdf'},
+//       { id: 4, name: 'Tito222222222.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false,type: 'docx' },
+//       { id: 5, name: 'Tito.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false , type: 'pdf'},
+//       { id: 6, name: 'Tito222222222.pdf', date: 'Jan 24, 1999', size: '19.00 MB', verified: false,type: 'docx' },
+//   ]);
 
 //   return (
-//     <CommonLayout>
-//       <Breadcrumbs aria-label="breadcrumb">
-//         <Link
-//           underline="hover"
-//           sx={{ display: "flex", alignItems: "center" }}
-//           color="inherit"
-//           href="my-documents/"
-//         >
-//           <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-//         </Link>
-//         <Link underline="hover" sx={{ display: "flex", alignItems: "center" }} color="inherit">
-//           My Documents
-//         </Link>
-//       </Breadcrumbs>
-//       <Typography variant="h4" component="h2">
+//     <Box
+//       sx={{
+//         margin: '40px',
+//         fontFamily: 'Roboto',
+//         fontWeight: 500,
+//         fontSize: '14px',
+//         lineHeight: '24px',
+//         color: '#6B6B6B',
+//         height: '100%',
+//         width: '100%',
+//       }}
+//     >
+//       <Typography
+//         sx={{
+//           fontWeight: 500,
+//           fontSize: '18px',
+//           lineHeight: '28px',
+//           marginBottom: '5px',
+//           color: '#4C4C4C',
+//         }}
+//       >
 //         My Documents
 //       </Typography>
-//       <TabContext value={value}>
-//         <Box sx={{ borderBottom: 1, borderColor: "divider", mb: 2 }}>
-//           <TabList
-//             onChange={handleChange}
-//             aria-label="Document tabs"
-//             textColor="primary"
-//             indicatorColor="primary"
-//             variant="scrollable"
-//             scrollButtons="auto"
-//           >
-//             <Tab label="VERIFIED" value="1" />
-//             <Tab label="UNVERIFIED" value="2" />
-//             <Tab label="IN PROGRESS" value="3" />
-//           </TabList>
-//         </Box>
-//         <Box
+//       <Breadcrumbs
+//         separator={<NavigateNextIcon sx={{ fontSize: '16px' }} />}
+//         aria-label="breadcrumb"
+//         sx={{
+//           fontSize: '12px',
+//           lineHeight: '16px',
+//           marginBottom: '16px',
+//           color: '#808080',
+//         }}
+//       >
+//         <MuiLink underline="hover" color="inherit" href="/">
+//           My Files
+//         </MuiLink>
+//         <Typography color="text.primary">Documents</Typography>
+//       </Breadcrumbs>
+
+//       <Box
+//         sx={{
+//           marginTop: '20px',
+//           display: 'flex',
+//           justifyContent: 'space-between',
+//         }}
+//       >
+//         <Typography
 //           sx={{
-//             width: '1140px',
-//             height: '30px',
-//             display: 'flex',
-//             justifyContent: 'flex-end',
-//             mb: 2,
+//             fontWeight: 400,
+//             fontSize: '16px',
+//             lineHeight: '20px',
+//             color: '#4C4C4C',
 //           }}
 //         >
-//           <Box>
-//             <Button onClick={handleVerifyAll} variant="outlined" startIcon={<DoneAllIcon />} sx={{ mr: 1 }}>
-//               VERIFY ALL
-//             </Button>
-//             <Button onClick={handleDeleteAll} variant="outlined" startIcon={<DeleteOutlineOutlinedIcon />} color="error">
-//               DELETE ALL
-//             </Button>
-//           </Box>
-//         </Box>
-//         <Box sx={{ height: 400, width: '100%' }}>
-//           <DataGrid
-//             rows={rows}
-//             columns={columns}
-//             checkboxSelection
-//             disableRowSelectionOnClick
-//             rowSelectionModel={selectionModel}
-//             onRowSelectionModelChange={(newSelectionModel: React.SetStateAction<GridRowSelectionModel>) => setSelectionModel(newSelectionModel)}
-//           />
-//         </Box>
-//         <Dialog
-//           open={openInfoDialog}
-//           onClose={handleCloseDialog}
-//           aria-labelledby="info-dialog-title"
-//           aria-describedby="info-dialog-description"
-//         >
-//           <DialogTitle id="info-dialog-title">{"Document Information"}</DialogTitle>
-//           <DialogContent>
-//             <DialogContentText id="info-dialog-description">
-//               {selectedRow && (
-//                 <>
-//                   <Typography variant="body1"><strong>Name:</strong> {selectedRow.name}</Typography>
-//                   <Typography variant="body1"><strong>Date Created:</strong> {selectedRow.date}</Typography>
-//                   <Typography variant="body1"><strong>File Size:</strong> {selectedRow.size}</Typography>
-//                 </>
-//               )}
-//             </DialogContentText>
-//           </DialogContent>
-//           <DialogActions>
-//             <Button onClick={handleCloseDialog} autoFocus>
-//               Close
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-//         <Dialog
-//           open={openDeleteDialog}
-//           onClose={handleCloseDialog}
-//           aria-labelledby="delete-dialog-title"
-//           aria-describedby="delete-dialog-description"
-//         >
-//           <DialogTitle id="delete-dialog-title">{"Delete Document"}</DialogTitle>
-//           <DialogContent>
-//             <DialogContentText id="delete-dialog-description">
-//               Are you sure you want to delete this document?
-//             </DialogContentText>
-//           </DialogContent>
-//           <DialogActions>
-//             <Button onClick={handleCloseDialog}>Cancel</Button>
-//             <Button onClick={() => handleDeleteFile(selectedRow!.id)} autoFocus>
-//               Delete
-//             </Button>
-//           </DialogActions>
-//         </Dialog>
-//         <Snackbar
-//           open={snackbarOpen}
-//           autoHideDuration={6000}
-//           onClose={handleCloseSnackbar}
-//           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-//         >
-//           <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-//             File "{verifiedFileName}" verified successfully!
-//           </Alert>
-//         </Snackbar>
-//       </TabContext>
-//     </CommonLayout>
-//   );
-// }
+//           Verified Documents
+//         </Typography>
+//         <VerifiedUserIcon />
+//       </Box>
 
+//       <Box
+//         sx={{
+//           height: '352px',
+//           marginTop: '12px',
+//         }}
+//       >
+//         <UnverifiedDocuments rows={rows} setRows={setRows} />
+//       </Box>
+//     </Box>
+//   );
+// };
+
+// export default MyDocuments;
