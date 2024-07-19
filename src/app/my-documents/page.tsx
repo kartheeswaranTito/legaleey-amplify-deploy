@@ -4,6 +4,7 @@
 
 import CommonLayout from "@/components/CommonLayout";
 import * as React from "react";
+import InProgress from "@/components/InProgress_Component";
 import {
 	Box,
 	Breadcrumbs,
@@ -86,7 +87,9 @@ export default function MyDocuments() {
 				</Box>
 				<TabPanel value='1'></TabPanel>
 				<TabPanel value='2'></TabPanel>
-				<TabPanel value='3'></TabPanel>
+				<TabPanel value='3'>
+					<InProgress />
+				</TabPanel>
 			</TabContext>
 			{/* </Box> */}
 
