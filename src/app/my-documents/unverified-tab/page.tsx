@@ -111,7 +111,7 @@ const getFileIcon = (fileType: string) => {
 	}
 };
 
-export default function Unverified() {
+export default function UnverifiedTab() {
 	const [value, setValue] = useState<string>("2");
 	const [rows, setRows] = useState<Row[]>(initialRows);
 	const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>(
@@ -177,7 +177,7 @@ export default function Unverified() {
 		setSnackbarOpen(false);
 	};
 
-	//table
+	// table
 	const columns = [
 		{
 			field: "name",
@@ -185,7 +185,6 @@ export default function Unverified() {
 			width: 300,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
-
 			renderCell: (params: any) => (
 				<Box sx={{ display: "flex", alignItems: "center", fontWeight: "500" }}>
 					<img src={getFileIcon(params.row.type)} />
@@ -197,7 +196,6 @@ export default function Unverified() {
 				</Box>
 			),
 		},
-
 		{
 			field: "date",
 			headerName: "Date Created",
@@ -205,26 +203,6 @@ export default function Unverified() {
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
 		},
-		// {
-		//   field: 'date',
-		//   headerName: 'Date Created',
-		//   width: 250,
-		//   headerClassName: 'header-spacing',
-		//   cellClassName: 'cell-spacing',
-		//   renderCell: (params: any) => (
-		//     <Typography
-		//       sx={{
-		//         fontFamily: 'Roboto',
-		//         fontSize: '14px',
-		//         fontWeight: 400,
-		//         lineHeight: '19px',
-		//          textAlign: 'left'
-		//       }}
-		//     >
-		//       {params.row.date}
-		//     </Typography>
-		//   ),
-		// },
 		{
 			field: "size",
 			headerName: "File Size",
@@ -241,7 +219,7 @@ export default function Unverified() {
 				<Box>
 					<Button
 						onClick={() => handleVerifyFile(params.row.id)}
-						variant='outlined'
+						variant="outlined"
 					>
 						<DoneAllIcon />
 						Verify File
@@ -256,11 +234,10 @@ export default function Unverified() {
 							}}
 						/>
 					</Button>
-
 					{/* TOOLTIP */}
 					<Tooltip
-						title='Move to trash'
-						placement='top'
+						title="Move to trash"
+						placement="top"
 						arrow
 						enterDelay={500}
 						leaveDelay={200}
@@ -294,7 +271,34 @@ export default function Unverified() {
 	];
 
 	return (
-		<>
+		<Container>
+			<Box
+  sx={{
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    mb: 2,
+  }}
+>
+  <Button
+    onClick={handleVerifyAll}
+    variant="outlined"
+    startIcon={<DoneAllIcon />}
+    sx={{ mr: 1 }}
+  >
+    VERIFY ALL
+  </Button>
+  <Button
+    onClick={handleDeleteAll}
+    variant="outlined"
+    startIcon={<DeleteOutlineOutlinedIcon />}
+    color="error"
+  >
+    DELETE ALL
+  </Button>
+</Box>
+
+
 			<DataGrid
 				rows={rows.filter((row) => !row.verified)}
 				columns={columns}
@@ -303,8 +307,10 @@ export default function Unverified() {
 					setSelectionModel(newSelection)
 				}
 				rowSelectionModel={selectionModel}
-				style={{ width: "1140px", height: "352px" }}
+				style={{ width: "100%", height: "352px" }}
 			/>
+
+			{/* Dialogs and Snackbars */}
 
 			<Dialog
 				open={openInfoDialog}
@@ -334,16 +340,12 @@ export default function Unverified() {
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button
-						onClick={handleCloseDialog}
-						color='primary'
-					>
+					<Button onClick={handleCloseDialog} color="primary">
 						Close
 					</Button>
 				</DialogActions>
 			</Dialog>
 
-			{/* DIALOG DELETE */}
 			<Dialog
 				open={openDeleteDialog}
 				onClose={handleCloseDialog}
@@ -370,12 +372,8 @@ export default function Unverified() {
 						"{selectedRow?.name}" will be deleted forever. Want to delete it?
 					</DialogContentText>
 				</DialogContent>
-
 				<DialogActions>
-					<Button
-						onClick={handleCloseDialog}
-						color='primary'
-					>
+					<Button onClick={handleCloseDialog} color="primary">
 						Cancel
 					</Button>
 					<Button
@@ -392,43 +390,6 @@ export default function Unverified() {
 				</DialogActions>
 			</Dialog>
 
-			{/* Red snackbar 
-<Snackbar
-      open={snackbarOpen}
-      autoHideDuration={6000}
-      onClose={}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-    >
-      <Alert
-        severity="error"
-        sx={{
-          width: '400px',
-          height: 'auto',
-          borderRadius: '4px',
-          background: '#D32F2F',
-          color: '#FFFFFF',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <div style={{ flexGrow: 1 }}>
-          <Typography variant="body2">
-            {verifiedFileName} cannot be verified
-          </Typography>
-          <Typography variant="caption">
-            File type jpeg is not supported file. File types supported are PDF, Microsoft Word only
-          </Typography>
-        </div>
-        <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSnackbar}>
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      </Alert>
-    </Snackbar>
-*/}
-
-			{/* Green snackbar  */}
-
 			<Snackbar
 				open={snackbarOpen}
 				autoHideDuration={6000}
@@ -437,7 +398,7 @@ export default function Unverified() {
 			>
 				<Alert
 					icon={false}
-					severity='success'
+					severity="success"
 					sx={{
 						width: "370px",
 						height: "auto",
@@ -459,11 +420,11 @@ export default function Unverified() {
 							alignItems: "center",
 						}}
 					>
-						<Typography variant='body2'>
+						<Typography variant="body2">
 							{verifiedFileName} is successfully verified
 						</Typography>
 						<Button
-							size='small'
+							size="small"
 							sx={{
 								color: "white",
 								width: "68px",
@@ -477,16 +438,16 @@ export default function Unverified() {
 							View File
 						</Button>
 						<IconButton
-							size='small'
-							aria-label='close'
-							color='inherit'
+							size="small"
+							aria-label="close"
+							color="inherit"
 							onClick={handleCloseSnackbar}
 						>
-							<CloseIcon fontSize='small' />
+							<CloseIcon fontSize="small" />
 						</IconButton>
 					</Box>
 				</Alert>
 			</Snackbar>
-		</>
+		</Container>
 	);
 }

@@ -31,7 +31,7 @@ import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import NewButton from "../new-button/page";
 
-export default function VerifiedPage() {
+export default function VerifiedTab() {
   const [value, setValue] = React.useState("1");
   const [view, setView] = React.useState<"table" | "grid">("table");
 

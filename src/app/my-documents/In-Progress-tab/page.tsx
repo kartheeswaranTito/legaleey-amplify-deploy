@@ -109,7 +109,7 @@ const getFileIcon = (fileType: string) => {
 	}
 };
 
-const InProgress = () => {
+const InProgressTab = () => {
 	const columns = [
 		{
 			field: "name",
@@ -187,4 +187,4 @@ const InProgress = () => {
 	);
 };
 
-export default InProgress;
+export default InProgressTab;
