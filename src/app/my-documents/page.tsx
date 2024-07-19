@@ -159,6 +159,7 @@
 
 import CommonLayout from "@/components/CommonLayout";
 import * as React from "react";
+import InProgress from "./In-Progress-tab/page";
 import {
   Box,
   Breadcrumbs,
@@ -228,7 +229,7 @@ export default function DemoTable() {
            
           </TabPanel>
           <TabPanel value="3">
-        
+        <InProgress />
           </TabPanel>
         </TabContext>
       
