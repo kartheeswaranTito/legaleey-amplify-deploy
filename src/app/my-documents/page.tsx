@@ -172,6 +172,7 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import HomeIcon from "@mui/icons-material/Home";
 import { Add } from "@mui/icons-material";
 import VerifiedPage from "./verified-page/page";
+import Unverified from "./UnVerified Tab/page";
 
 
 // import styles from '../../styles/addNewPage.module.css';
@@ -226,7 +227,7 @@ export default function DemoTable() {
           <VerifiedPage />
           </TabPanel>
           <TabPanel value="2">
-           
+           <Unverified/>
           </TabPanel>
           <TabPanel value="3">
         <InProgress />
