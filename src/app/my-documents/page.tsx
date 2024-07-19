@@ -4,7 +4,7 @@
 
 import CommonLayout from "@/components/CommonLayout";
 import * as React from "react";
-import InProgress from "@/components/InProgress_Component";
+import InProgress from "./In-Progress-tab/InProgress_Component";
 import {
 	Box,
 	Breadcrumbs,
