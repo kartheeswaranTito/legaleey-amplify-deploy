@@ -93,7 +93,7 @@ export default function MyDocuments() {
 			</TabContext>
 			{/* </Box> */}
 
-			<Box sx={{ mt: 20, textAlign: "center" }}>
+			{/* <Box sx={{ mt: 20, textAlign: "center" }}>
 				<Typography
 					variant='h6'
 					component='h1'
@@ -121,7 +121,7 @@ export default function MyDocuments() {
 				>
 					ADD NEW
 				</Button>
-			</Box>
+			</Box> */}
 			<Box sx={{ mt: 5, mb: 5, textAlign: "center" }}>
 				<StorageManager
 					acceptedFileTypes={["*"]}
