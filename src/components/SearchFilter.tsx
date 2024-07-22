@@ -32,8 +32,6 @@ const SearchFilter: React.FC = () => {
 	const [slider1Value, setSlider1Value] = React.useState<number[]>([
 		1900, 2024,
 	]);
-	const [slider1Input1, setSlider1Input1] = useState(slider1Value[0]);
-	const [slider1Input2, setSlider1Input2] = useState(slider1Value[1]);
 
 	function handleFilterOpen() {
 		setOpenFilter(true);
