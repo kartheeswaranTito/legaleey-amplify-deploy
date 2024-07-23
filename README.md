@@ -29,3 +29,5 @@ npm install node-sass (this for scss file)
 npm install sass
 
 npm run dev
+
+Checking master deployment trigger
