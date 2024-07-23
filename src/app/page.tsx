@@ -6,6 +6,8 @@ import awsExports from './../aws-exports';
 import { Amplify } from 'aws-amplify';
 import { Box, TextField } from '@mui/material';
 import Home from '@/app/home/page';
+import type { AppProps } from "next/app";
+import dynamic from "next/dynamic";
 
 
 import { I18n } from 'aws-amplify/utils';
@@ -333,4 +335,8 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+
+export default dynamic(() => Promise.resolve(App), {
+  ssr: false,
+});
