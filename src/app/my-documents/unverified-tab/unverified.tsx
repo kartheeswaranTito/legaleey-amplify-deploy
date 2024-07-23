@@ -186,21 +186,21 @@ export default function UnverifiedTab() {
 			width: 300,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
-			// renderCell: (params: any) => (
-			// 	<Box sx={{ display: "flex", alignItems: "center", fontWeight: "500" }}>
-			// 		<Image
-			// 			src={getFileIcon(params.row.type)}
-			// 			alt={`${params.row.type} icon`} // Add alt attribute
-			// 			width={24} // Provide width for the Image component
-			// 			height={24} // Provide height for the Image component
-			// 		/>
-			// 		<Typography sx={{ ml: "5px" }}>{params.row.type}</Typography>
-			// 		{params.row.name}
-			// 		{!params.row.verified && (
-			// 			<ErrorOutlineIcon sx={{ color: "#DC362E", ml: 1 }} />
-			// 		)}
-			// 	</Box>
-			// ),
+			renderCell: (params: any) => (
+				<Box sx={{ display: "flex", alignItems: "center", fontWeight: "500" }}>
+					<Image
+						src={getFileIcon(params.row.type)}
+						alt={`${params.row.type} icon`} // Add alt attribute
+						width={24} // Provide width for the Image component
+						height={24} // Provide height for the Image component
+					/>
+					<Typography sx={{ ml: "5px" }}>{params.row.type}</Typography>
+					{params.row.name}
+					{!params.row.verified && (
+						<ErrorOutlineIcon sx={{ color: "#DC362E", ml: 1 }} />
+					)}
+				</Box>
+			),
 		},
 		{
 			field: "date",
@@ -221,58 +221,58 @@ export default function UnverifiedTab() {
 			headerName: "",
 			width: 250,
 			disableColumnMenu: true,
-			// renderCell: (params: any) => (
-			// 	<Box>
-			// 		<Button
-			// 			onClick={() => handleVerifyFile(params.row.id)}
-			// 			variant="outlined"
-			// 		>
-			// 			<DoneAllIcon />
-			// 			Verify File
-			// 		</Button>
-			// 		<Button onClick={() => handleOpenInfoDialog(params.row)}>
-			// 			<InfoOutlinedIcon
-			// 				sx={{
-			// 					color: "#65656B",
-			// 					width: "24px",
-			// 					height: "24px",
-			// 					boxShadow: "0",
-			// 				}}
-			// 			/>
-			// 		</Button>
-			// 		{/* TOOLTIP */}
-			// 		<Tooltip
-			// 			title="Move to trash"
-			// 			placement="top"
-			// 			arrow
-			// 			enterDelay={500}
-			// 			leaveDelay={200}
-			// 			componentsProps={{
-			// 				tooltip: {
-			// 					sx: {
-			// 						width: "90px",
-			// 						height: "22px",
-			// 						borderRadius: "4px",
-			// 						padding: "4px 8px",
-			// 						opacity: "1",
-			// 						background: "#7E7E83",
-			// 						fontSize: "12px",
-			// 					},
-			// 				},
-			// 			}}
-			// 		>
-			// 			<Button onClick={() => handleOpenDeleteDialog(params.row)}>
-			// 				<DeleteOutlineOutlinedIcon
-			// 					sx={{
-			// 						color: "#65656B",
-			// 						width: "24px",
-			// 						height: "24px",
-			// 					}}
-			// 				/>
-			// 			</Button>
-			// 		</Tooltip>
-			// 	</Box>
-			// ),
+			renderCell: (params: any) => (
+				<Box>
+					<Button
+						onClick={() => handleVerifyFile(params.row.id)}
+						variant="outlined"
+					>
+						<DoneAllIcon />
+						Verify File
+					</Button>
+					<Button onClick={() => handleOpenInfoDialog(params.row)}>
+						<InfoOutlinedIcon
+							sx={{
+								color: "#65656B",
+								width: "24px",
+								height: "24px",
+								boxShadow: "0",
+							}}
+						/>
+					</Button>
+					{/* TOOLTIP */}
+					<Tooltip
+						title="Move to trash"
+						placement="top"
+						arrow
+						enterDelay={500}
+						leaveDelay={200}
+						componentsProps={{
+							tooltip: {
+								sx: {
+									width: "90px",
+									height: "22px",
+									borderRadius: "4px",
+									padding: "4px 8px",
+									opacity: "1",
+									background: "#7E7E83",
+									fontSize: "12px",
+								},
+							},
+						}}
+					>
+						<Button onClick={() => handleOpenDeleteDialog(params.row)}>
+							<DeleteOutlineOutlinedIcon
+								sx={{
+									color: "#65656B",
+									width: "24px",
+									height: "24px",
+								}}
+							/>
+						</Button>
+					</Tooltip>
+				</Box>
+			),
 		},
 	];
 

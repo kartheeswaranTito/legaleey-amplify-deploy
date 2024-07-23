@@ -24,7 +24,7 @@ import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import NewButton from "../new-button/page";
+import NewButton from "../new-button/newbutton";
 
 export default function VerifiedTab() {
   const [view, setView] = React.useState<"table" | "grid">("table");
@@ -110,51 +110,51 @@ export default function VerifiedTab() {
       field: "file_name",
       headerName: "File Name",
       flex: 1,
-      // renderCell: (params: GridRenderCellParams<any>) => (
-      //   <Box sx={{ display: "flex", alignItems: "center" }}>
-      //     {/* <img
-      //       src={getFileIcon(params.row.file_type)}
-      //       alt={params.row.file_type}
-      //       style={{ width: 24, height: 24, marginRight: 8 }}
-      //     /> */}
-      //      {getFileIcon(params.row.file_type)}
-      //     <span style={{ color: "#393940" }}>{params.row.file_name}</span>
-      //   </Box>
-      // ),
+      renderCell: (params: GridRenderCellParams<any>) => (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          {/* <img
+            src={getFileIcon(params.row.file_type)}
+            alt={params.row.file_type}
+            style={{ width: 24, height: 24, marginRight: 8 }}
+          /> */}
+           {getFileIcon(params.row.file_type)}
+          <span style={{ color: "#393940" }}>{params.row.file_name}</span>
+        </Box>
+      ),
       headerClassName: "custom-header",
     },
     {
       field: "uploaded_date",
       headerName: "Uploaded Date",
       flex: 1,
-      // renderCell: (params: GridRenderCellParams<any>) => (
-      //   <span style={{ color: "#3F3F46" }}>{params.row.uploaded_date}</span>
-      // ),
+      renderCell: (params: GridRenderCellParams<any>) => (
+        <span style={{ color: "#3F3F46" }}>{params.row.uploaded_date}</span>
+      ),
       headerClassName: "custom-header",
     },
     {
       field: "file_type",
       headerName: "File Type",
       flex: 1,
-      // renderCell: (params: GridRenderCellParams<any>) => (
-      //   <span style={{ color: "#3F3F46" }}>{params.row.file_type}</span>
-      // ),
+      renderCell: (params: GridRenderCellParams<any>) => (
+        <span style={{ color: "#3F3F46" }}>{params.row.file_type}</span>
+      ),
       headerClassName: "custom-header",
     },
     {
       field: "file_size",
       headerName: "File Size",
       flex: 1,
-      // renderCell: (params: GridRenderCellParams<any>) => (
-      //   <span style={{ color: "#3F3F46" }}>{params.row.file_size}</span>
-      // ),
+      renderCell: (params: GridRenderCellParams<any>) => (
+        <span style={{ color: "#3F3F46" }}>{params.row.file_size}</span>
+      ),
       headerClassName: "custom-header",
     },
     {
       field: "actions",
       headerName: "",
       width: 100,
-      // renderCell: (params: GridRenderCellParams<any>) => <ActionsMenu />,
+       renderCell: (params: GridRenderCellParams<any>) => <ActionsMenu />,
     },
   ];
 

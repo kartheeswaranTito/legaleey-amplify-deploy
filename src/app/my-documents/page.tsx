@@ -13,9 +13,10 @@ import {
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import HomeIcon from "@mui/icons-material/Home";
 import { Add } from "@mui/icons-material";
-import VerifiedTab from "./verified-tab/page";
-import UnverifiedTab from "./unverified-tab/page";
-import InProgressTab from "./In-Progress-tab/page";
+import VerifiedTab from "./verified-tab/verified";
+import UnverifiedTab from "./unverified-tab/unverified";
+import InProgressTab from "./In-Progress-tab/inprogress";
+
 
 
 // import styles from '../../styles/addNewPage.module.css';
