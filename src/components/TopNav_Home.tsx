@@ -25,11 +25,14 @@ import {
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
+import { useAuthenticator } from "@aws-amplify/ui-react"; // Import useAuthenticator
+
 
 import { blue, deepOrange } from "@mui/material/colors";
 const TopNav: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { signOut } = useAuthenticator(); 
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -126,16 +129,20 @@ const TopNav: React.FC = () => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
-            <ListItemIcon></ListItemIcon>
+          <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
             <Button
               variant="outlined"
               color="error"
-              // size="medium"
               sx={{
                 width: "200px",
               }}
+              onClick={signOut}
             >
               SIGN OUT
+
+
             </Button>
           </MenuItem>
         </Menu>

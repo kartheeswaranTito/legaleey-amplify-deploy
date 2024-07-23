@@ -78,7 +78,7 @@ export default function Home() {
             mt: 10,
           }}
         >
-          Welcome Vikas! Let's get started.
+           Welcome Vikas! Let&apos;s get started.
         </Typography>
 
         <Grid container spacing={3}>
@@ -139,13 +139,13 @@ export default function Home() {
               color: "#1a73e8",
               fontWeight: "bold",
               textDecoration: "none",
-              width: '100%',
+              // width: '100%',
               justifyContent: 'center',
            
             }}
           >
             <CardGiftcardIcon sx={{ mr: 1 }} />
-            Find What's New Here!
+           <Typography> Find What&apos;s New Here!</Typography>
           </Box>
         </Box>
       </Container>

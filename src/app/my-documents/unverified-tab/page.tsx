@@ -29,6 +29,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import { DataGrid, GridRowSelectionModel } from "@mui/x-data-grid";
 import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image"; // import Image from next/image
 
 interface Row {
 	id: number;
@@ -187,7 +188,12 @@ export default function UnverifiedTab() {
 			cellClassName: "cell-spacing",
 			renderCell: (params: any) => (
 				<Box sx={{ display: "flex", alignItems: "center", fontWeight: "500" }}>
-					<img src={getFileIcon(params.row.type)} />
+					<Image
+						src={getFileIcon(params.row.type)}
+						alt={`${params.row.type} icon`} // Add alt attribute
+						width={24} // Provide width for the Image component
+						height={24} // Provide height for the Image component
+					/>
 					<Typography sx={{ ml: "5px" }}>{params.row.type}</Typography>
 					{params.row.name}
 					{!params.row.verified && (
@@ -273,31 +279,30 @@ export default function UnverifiedTab() {
 	return (
 		<Container>
 			<Box
-  sx={{
-    display: "flex",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    mb: 2,
-  }}
->
-  <Button
-    onClick={handleVerifyAll}
-    variant="outlined"
-    startIcon={<DoneAllIcon />}
-    sx={{ mr: 1 }}
-  >
-    VERIFY ALL
-  </Button>
-  <Button
-    onClick={handleDeleteAll}
-    variant="outlined"
-    startIcon={<DeleteOutlineOutlinedIcon />}
-    color="error"
-  >
-    DELETE ALL
-  </Button>
-</Box>
-
+				sx={{
+					display: "flex",
+					justifyContent: "flex-end",
+					alignItems: "center",
+					mb: 2,
+				}}
+			>
+				<Button
+					onClick={handleVerifyAll}
+					variant="outlined"
+					startIcon={<DoneAllIcon />}
+					sx={{ mr: 1 }}
+				>
+					VERIFY ALL
+				</Button>
+				<Button
+					onClick={handleDeleteAll}
+					variant="outlined"
+					startIcon={<DeleteOutlineOutlinedIcon />}
+					color="error"
+				>
+					DELETE ALL
+				</Button>
+			</Box>
 
 			<DataGrid
 				rows={rows.filter((row) => !row.verified)}
@@ -369,7 +374,7 @@ export default function UnverifiedTab() {
 							textAlign: "left",
 						}}
 					>
-						"{selectedRow?.name}" will be deleted forever. Want to delete it?
+						{`"${selectedRow?.name}"`} will be deleted forever. Want to delete it?
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>

@@ -10,6 +10,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import Modal from "@mui/material/Modal";
 import { DataGrid, GridRowSelectionModel } from "@mui/x-data-grid";
 import { PanoramaSharp, Restore } from "@mui/icons-material";
+import Image from "next/image";
 
 // sample data
 interface Row {
@@ -147,7 +148,12 @@ export default function Trash() {
 								mt: "10px",
 							}}
 						>
-							<img src={getFileIcon(params.row.type)} />
+							<Image
+						src={getFileIcon(params.row.type)}
+						alt={`${params.row.type} icon`} // Add alt attribute
+						width={24} // Provide width for the Image component
+						height={24} // Provide height for the Image component
+					/>
 							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
 						</Box>
 					);
