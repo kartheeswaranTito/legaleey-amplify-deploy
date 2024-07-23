@@ -117,27 +117,27 @@ const InProgressTab = () => {
       width: 300,
       headerClassName: "header-spacing",
       cellClassName: "cell-spacing",
-      renderCell: (params: any) => {
-        if (params.row.type === "pdf" || params.row.type === "docx") {
-          return (
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mt: "10px",
-              }}
-            >
-              <Image
-                src={getFileIcon(params.row.type)}
-                alt={`${params.row.type} icon`}
-                width={24}
-                height={24}
-              />
-              <Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
-            </Box>
-          );
-        }
-      },
+    //   renderCell: (params: any) => {
+    //     if (params.row.type === "pdf" || params.row.type === "docx") {
+    //       return (
+    //         <Box
+    //           sx={{
+    //             display: "flex",
+    //             alignItems: "center",
+    //             mt: "10px",
+    //           }}
+    //         >
+    //           <Image
+    //             src={getFileIcon(params.row.type)}
+    //             alt={`${params.row.type} icon`}
+    //             width={24}
+    //             height={24}
+    //           />
+    //           <Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
+    //         </Box>
+    //       );
+    //     }
+    //   },
     },
     {
       field: "size",
@@ -152,23 +152,23 @@ const InProgressTab = () => {
       width: 600,
       headerClassName: "header-spacing",
       cellClassName: "cell-spacing",
-      renderCell: (params: any) => {
-        return (
-          <Box sx={{ display: "flex" }}>
-            <Box sx={{ ml: "140px", width: "50%", alignSelf: "center" }}>
-              <Box>
-                <LinearProgress variant="determinate" value={params.row.progress} />
-              </Box>
-            </Box>
-            <Button>
-              <PauseCircleOutlineIcon />
-            </Button>
-            <Button>
-              <CloseIcon />
-            </Button>
-          </Box>
-        );
-      },
+    //   renderCell: (params: any) => {
+    //     return (
+    //       <Box sx={{ display: "flex" }}>
+    //         <Box sx={{ ml: "140px", width: "50%", alignSelf: "center" }}>
+    //           <Box>
+    //             <LinearProgress variant="determinate" value={params.row.progress} />
+    //           </Box>
+    //         </Box>
+    //         <Button>
+    //           <PauseCircleOutlineIcon />
+    //         </Button>
+    //         <Button>
+    //           <CloseIcon />
+    //         </Button>
+    //       </Box>
+    //     );
+    //   },
     },
   ];
 

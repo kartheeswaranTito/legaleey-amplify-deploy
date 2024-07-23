@@ -47,12 +47,13 @@ const columns: GridColDef<(typeof data)[number]>[] = [
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 100,
-    renderCell: (params: GridRenderCellParams<any>) => <ActionsMenu />,
+    width: 100
+    // renderCell: (params: GridRenderCellParams<any>) => <ActionsMenu />,
   },
 ];
 
-const ActionsMenu = () => {
+const ActionsMenu = async() => {
+ 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

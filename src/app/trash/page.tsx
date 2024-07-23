@@ -138,34 +138,34 @@ export default function Trash() {
 			width: 225,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
-			renderCell: (params: any) => {
-				if (params.row.type === "pdf") {
-					return (
-						<Box
-							sx={{
-								display: "flex",
-								alignItems: "center",
-								mt: "10px",
-							}}
-						>
-							<Image
-						src={getFileIcon(params.row.type)}
-						alt={`${params.row.type} icon`} // Add alt attribute
-						width={24} // Provide width for the Image component
-						height={24} // Provide height for the Image component
-					/>
-							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
-						</Box>
-					);
-				} else if (params.row.type === "docx") {
-					return (
-						<Box sx={{ display: "flex", alignItems: "center", mt: "10px" }}>
-							<ArticleIcon />
-							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
-						</Box>
-					);
-				}
-			},
+			// renderCell: (params: any) => {
+			// 	if (params.row.type === "pdf") {
+			// 		return (
+			// 			<Box
+			// 				sx={{
+			// 					display: "flex",
+			// 					alignItems: "center",
+			// 					mt: "10px",
+			// 				}}
+			// 			>
+			// 				<Image
+			// 			src={getFileIcon(params.row.type)}
+			// 			alt={`${params.row.type} icon`} // Add alt attribute
+			// 			width={24} // Provide width for the Image component
+			// 			height={24} // Provide height for the Image component
+			// 		/>
+			// 				<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
+			// 			</Box>
+			// 		);
+			// 	} else if (params.row.type === "docx") {
+			// 		return (
+			// 			<Box sx={{ display: "flex", alignItems: "center", mt: "10px" }}>
+			// 				<ArticleIcon />
+			// 				<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
+			// 			</Box>
+			// 		);
+			// 	}
+			// },
 		},
 		{
 			field: "date",
@@ -194,18 +194,18 @@ export default function Trash() {
 			width: 225,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
-			renderCell: (params: any) => {
-				return (
-					<Box sx={{ display: "flex", ml: "60px" }}>
-						<Button>
-							<RestoreIcon />
-						</Button>
-						<Button onClick={handleOpen1}>
-							<DeleteOutlineIcon />
-						</Button>
-					</Box>
-				);
-			},
+			// renderCell: (params: any) => {
+			// 	return (
+			// 		<Box sx={{ display: "flex", ml: "60px" }}>
+			// 			<Button>
+			// 				<RestoreIcon />
+			// 			</Button>
+			// 			<Button onClick={handleOpen1}>
+			// 				<DeleteOutlineIcon />
+			// 			</Button>
+			// 		</Box>
+			// 	);
+			// },
 		},
 	];
 	return (
