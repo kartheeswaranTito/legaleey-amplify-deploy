@@ -1,33 +1,46 @@
 Steps need to be followed:
+--------------------------
 
 cd legaleey-next-amplify
    
-npx create-next-app@latest my-nextjs-app
- 
-npm install aws-amplify @aws-amplify/ui-react
+npm install   
 
-npm install -g @aws-amplify/cli
+Enter amplify configure
 
-amplify init
+press Enter to continue
 
-access key/Profile
+select region as us-east-1
 
-amplify add auth/amplify update auth(If you've already added to this project)
+press Enter to continue
 
-amplify pull
+Enter the access key and secretAccessKey 
 
-amplify push
+Enter Profile name (any name ex: xyz)
 
-npm install @mui/material @emotion/react @emotion/styled
+Enter the command : amplify pull --appId d1fy3vws4mn48e --envName dev
 
-npm install @mui/icons-material
+( This command is used to pull the backend enviroinment to your local machine to access the  
+ userpool : (legaleewebapp2eb7fe60_userpool_2eb7fe60-dev) 
+ s3 bucket: (legaleewebappbucketba0cc-dev) )
 
-npm install @mui/material @mui/lab (my documents page tab component)
+Select AWS profile
 
-npm install node-sass (this for scss file)
+Choose the profile name as you have already created (profile name:xyz)
 
-npm install sass
+Select Visual Studio Code
+
+Select Javascript
+
+Select react
+
+Source Directory Path:  press Enter
+
+Distribution Directory Path: press Enter
+
+Build Command: press Enter  
+
+Start Command: press Enter
+
+Enter amplify pull
 
 npm run dev
-
-Checking master deployment trigger
