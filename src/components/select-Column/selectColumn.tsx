@@ -1,14 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import {
-	Box,
-	Drawer,
-	Button,
-	Typography,
-	IconButton,
-	TextField,
-	Switch,
-} from "@mui/material";
+import { Box, Drawer, Button, Typography, IconButton } from "@mui/material";
 import { Close, Edit } from "@mui/icons-material";
 import ColumnName from "./columnName";
 
