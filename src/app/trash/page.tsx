@@ -4,7 +4,8 @@ import CommonLayout from "@/components/CommonLayout";
 import { Box, Breadcrumbs, Link, Typography, Button } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import ArticleIcon from "@mui/icons-material/Article";
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import FolderIcon from "@mui/icons-material/Folder";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import RestoreIcon from "@mui/icons-material/Restore";
 import Modal from "@mui/material/Modal";
@@ -131,6 +132,34 @@ export default function Trash() {
 	const handleClose1 = () => setOpen1(false);
 	const handleOpen2 = () => setOpen2(true);
 	const handleClose2 = () => setOpen2(false);
+	const getFileIcon = (fileType: string) => {
+		switch (fileType) {
+			case "pdf":
+				return (
+					<PictureAsPdfIcon
+						style={{ width: 24, height: 24, marginRight: 8, color: "#DC362E" }}
+					/>
+				);
+			case "docx":
+				return (
+					<ArticleOutlinedIcon
+						style={{ width: 24, height: 24, marginRight: 8, color: "#3473DD" }}
+					/>
+				);
+			case "Folder":
+				return (
+					<FolderIcon
+						style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
+					/>
+				);
+			default:
+				return (
+					<FolderIcon
+						style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
+					/>
+				);
+		}
+	};
 	const columns = [
 		{
 			field: "name",
@@ -148,19 +177,14 @@ export default function Trash() {
 								mt: "10px",
 							}}
 						>
-							<Image
-						src={getFileIcon(params.row.type)}
-						alt={`${params.row.type} icon`} // Add alt attribute
-						width={24} // Provide width for the Image component
-						height={24} // Provide height for the Image component
-					/>
+							{getFileIcon(params.row.type)}
 							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
 						</Box>
 					);
 				} else if (params.row.type === "docx") {
 					return (
 						<Box sx={{ display: "flex", alignItems: "center", mt: "10px" }}>
-							<ArticleIcon />
+							<ArticleOutlinedIcon />
 							<Typography sx={{ ml: "5px" }}>{params.row.name}</Typography>
 						</Box>
 					);
@@ -257,6 +281,14 @@ export default function Trash() {
 						rows={initialRows}
 						columns={columns}
 						style={{ width: "1140px", height: "500px" }}
+						initialState={{
+							pagination: {
+								paginationModel: {
+									pageSize: 8,
+								},
+							},
+						}}
+						pageSizeOptions={[8]}
 					/>
 				) : (
 					<Typography

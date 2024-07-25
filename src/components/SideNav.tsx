@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+
 import { usePathname, useRouter } from "next/navigation";
 import {
 	Box,
@@ -24,6 +25,7 @@ import {
 	Add,
 } from "@mui/icons-material";
 import MyDocumnets from "../app/my-documents/page";
+import { withRouter } from "next/router";
 
 const drawerWidth = 240;
 
@@ -42,6 +44,13 @@ const SideNav: React.FC = () => {
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
+	function fileUpload() {
+		if (pathname !== "/my-documents") {
+			router.push("/my-documents");
+		} else {
+			document.getElementById("file_upload")?.click();
+		}
+	}
 
 	const handleClose = () => {
 		setAnchorEl(null);
@@ -125,7 +134,7 @@ const SideNav: React.FC = () => {
 						>
 							<MenuItem
 								onClick={() => {
-									document.getElementById("file_upload")?.click();
+									fileUpload();
 									handleClose();
 								}}
 							>
