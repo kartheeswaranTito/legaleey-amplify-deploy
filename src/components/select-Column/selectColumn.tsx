@@ -10,6 +10,7 @@ import {
 	Switch,
 } from "@mui/material";
 import { Close, Edit } from "@mui/icons-material";
+import ColumnName from "./columnName";
 
 const drawerWidth = "300px";
 function SelectColumn() {
@@ -73,95 +74,12 @@ function SelectColumn() {
 							<Close />
 						</IconButton>
 					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-						}}
-					>
-						<Typography>{column1Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-							marginTop: "20px",
-						}}
-					>
-						<Typography>{column2Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-							marginTop: "20px",
-						}}
-					>
-						<Typography>{column3Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-							marginTop: "20px",
-						}}
-					>
-						<Typography>{column4Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-							marginTop: "20px",
-						}}
-					>
-						<Typography>{column5Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-							marginTop: "20px",
-						}}
-					>
-						<Typography>{column6Name}</Typography>
-						<Box>
-							<IconButton>
-								<Edit />
-							</IconButton>
-							<Switch defaultChecked />
-						</Box>
-					</Box>
+					<ColumnName columnName={column1Name} />
+					<ColumnName columnName={column2Name} />
+					<ColumnName columnName={column3Name} />
+					<ColumnName columnName={column4Name} />
+					<ColumnName columnName={column5Name} />
+					<ColumnName columnName={column6Name} />
 				</Box>
 			</Drawer>
 		</>
