@@ -26,6 +26,24 @@ function SelectColumn() {
 		setSelectColumnOpen(nowOpen);
 	}
 
+	function handleColumnName1(newName: string) {
+		setColumn1Name(newName);
+	}
+	function handleColumnName2(newName: string) {
+		setColumn2Name(newName);
+	}
+	function handleColumnName3(newName: string) {
+		setColumn3Name(newName);
+	}
+	function handleColumnName4(newName: string) {
+		setColumn4Name(newName);
+	}
+	function handleColumnName5(newName: string) {
+		setColumn5Name(newName);
+	}
+	function handleColumnName6(newName: string) {
+		setColumn6Name(newName);
+	}
 	return (
 		<>
 			<Button onClick={() => handleSelectColumnChange(true)}>
@@ -74,12 +92,30 @@ function SelectColumn() {
 							<Close />
 						</IconButton>
 					</Box>
-					<ColumnName columnName={column1Name} />
-					<ColumnName columnName={column2Name} />
-					<ColumnName columnName={column3Name} />
-					<ColumnName columnName={column4Name} />
-					<ColumnName columnName={column5Name} />
-					<ColumnName columnName={column6Name} />
+					<ColumnName
+						columnName={column1Name}
+						onNameChange={handleColumnName1}
+					/>
+					<ColumnName
+						columnName={column2Name}
+						onNameChange={handleColumnName2}
+					/>
+					<ColumnName
+						columnName={column3Name}
+						onNameChange={handleColumnName3}
+					/>
+					<ColumnName
+						columnName={column4Name}
+						onNameChange={handleColumnName4}
+					/>
+					<ColumnName
+						columnName={column5Name}
+						onNameChange={handleColumnName5}
+					/>
+					<ColumnName
+						columnName={column6Name}
+						onNameChange={handleColumnName6}
+					/>
 				</Box>
 			</Drawer>
 		</>
