@@ -29,10 +29,12 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 import HomeIcon from "@mui/icons-material/HomeOutlined";
+import { useAuthenticator } from "@aws-amplify/ui-react"; 
 
 const TopNavSearch: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { signOut } = useAuthenticator(); 
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -50,87 +52,95 @@ const TopNavSearch: React.FC = () => {
       }}
     >
       <Toolbar>
-        <Grid item xs={4}>
-          <Typography variant="h5">LEGALEEY </Typography>
-        </Grid>
+        <Grid container alignItems="center">
+          <Grid  item xs={2}>
+            <Typography className="legaleey-heading" variant="h5">
+              LEGALEEY
+            </Typography>
+          </Grid>
 
-        <Grid
-          sx={{
-            width: "65%",
-            display: "flex",
-            justifyContent: "flex-start",
-            padding: "10px",
-            ml: 15,
-          }}
-        >
-          <Box
+          <Grid
+            item
+            xs={6}
             sx={{
-              width: "558px",
-              height: "44px",
               display: "flex",
               alignItems: "center",
-              backgroundColor: "#E9EEF6",
-              borderRadius: "28px",
-              padding: "10px 17px",
-              gap: "8px",
+              justifyContent: "flex-start",
+              padding: "10px",
             }}
           >
-            <SearchIcon sx={{ color: "#5F6774" }} />
-            <TextField
-              fullWidth
-              placeholder="Enter keyword to search all folders or select folder to search"
-              variant="standard"
-              InputProps={{
-                disableUnderline: true,
-                sx: {
-                  padding: 0,
-                  color: "#5F6774",
-                  fontSize: "16px",
-                },
-              }}
-            />
-            <IconButton sx={{ color: "#5F6774" }}>
-              <TuneIcon />
-            </IconButton>
-          </Box>
-        </Grid>
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-end",
-            textAlign: "float-right",
-          }}
-        >
-          <Link href="/home">
-            <Button
-              variant="outlined"
-              startIcon={<HomeIcon />}
-              color="primary"
+            <Box
               sx={{
-                borderRadius: "20px",
-                ml: 2, 
+                width: "558px",
+                height: "44px",
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "#E9EEF6",
+                borderRadius: "28px",
+                padding: "10px 17px",
+                gap: "8px",
               }}
             >
-              Back to Home
-            </Button>
-          </Link>
-          <HelpOutlineIcon sx={{ color: "#79808A", ml: 4 }} />
-          <Tooltip title="Account settings">
-            <IconButton
-              onClick={handleClick}
-              size="small"
-              sx={{ ml: 4 }}
-              aria-controls={open ? "account-menu" : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? "true" : undefined}
-            >
-              <Avatar sx={{ bgcolor: "#1469fb", width: 32, height: 32 }}>
-                VA
-              </Avatar>
-            </IconButton>
-          </Tooltip>
-        </Box>
+              <SearchIcon sx={{ color: "#5F6774" }} />
+              <TextField
+                fullWidth
+                placeholder="Enter keyword to search all folders or select folder to search"
+                variant="standard"
+                InputProps={{
+                  disableUnderline: true,
+                  sx: {
+                    padding: 0,
+                    color: "#5F6774",
+                    fontSize: "16px",
+                  },
+                }}
+              />
+              <IconButton sx={{ color: "#5F6774" }}>
+                <TuneIcon />
+              </IconButton>
+            </Box>
+          </Grid>
+
+          <Grid
+            item
+            xs={4}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Link href="/home">
+              <Button
+                variant="outlined"
+                startIcon={<HomeIcon />}
+                color="primary"
+                sx={{
+                  borderRadius: "20px",
+                  ml: 2,
+                }}
+              >
+                Back to Home
+              </Button>
+            </Link>
+            <HelpOutlineIcon sx={{ color: "#79808A", ml: 4 }} />
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 4 }}
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+              >
+                <Avatar sx={{ bgcolor: "#1469fb", width: 32, height: 32 }}>
+                  VA
+                </Avatar>
+              </IconButton>
+            </Tooltip>
+          </Grid>
+        </Grid>
+
         <Menu
           anchorEl={anchorEl}
           id="account-menu"
@@ -191,9 +201,20 @@ const TopNavSearch: React.FC = () => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
-            <ListItemIcon></ListItemIcon>
-            <Button variant="outlined" color="error" sx={{ width: "200px" }}>
+          <ListItemIcon>
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            <Button
+              variant="outlined"
+              color="error"
+              sx={{
+                width: "200px",
+              }}
+              onClick={signOut}
+            >
               SIGN OUT
+
+
             </Button>
           </MenuItem>
         </Menu>
@@ -203,39 +224,3 @@ const TopNavSearch: React.FC = () => {
 };
 
 export default TopNavSearch;
-
-// "use client";
-
-// import React from "react";
-// import { AppBar, Toolbar, Grid, Typography } from "@mui/material";
-
-// const TopNav: React.FC = () => {
-//   return (
-//     <AppBar position="static" sx={{ backgroundColor: "#F2F4F7" }}>
-//       <Toolbar>
-//         <Grid container alignItems="center">
-//           {/* Left Column */}
-//           <Grid item xs={2} sx={{ textAlign: "left"}}>
-//             <Typography variant="h5">
-//               LEGALEEY
-//             </Typography>
-//           </Grid>
-//           {/* Center Column */}
-//           <Grid item xs={6} sx={{ textAlign: "center" }}>
-//             <Typography variant="h6">
-//               Center Column
-//             </Typography>
-//           </Grid>
-//           {/* Right Column */}
-//           <Grid item xs={4} sx={{ textAlign: "right" }}>
-//             <Typography variant="h6">
-//               Right Column
-//             </Typography>
-//           </Grid>
-//         </Grid>
-//       </Toolbar>
-//     </AppBar>
-//   );
-// };
-
-// export default TopNav;

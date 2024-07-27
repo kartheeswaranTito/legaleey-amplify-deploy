@@ -13,6 +13,9 @@ const SearchLayout: React.FC<SearchLayoutProps> = ({ children }) => {
     <Authenticator.Provider>
     <div>
       <TopNav_Search />
+      <main>
+          {children}
+        </main>
       
     </div>
     </Authenticator.Provider>

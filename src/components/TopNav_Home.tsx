@@ -25,10 +25,8 @@ import {
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
-import { useAuthenticator } from "@aws-amplify/ui-react"; // Import useAuthenticator
+import { useAuthenticator } from "@aws-amplify/ui-react"; 
 
-
-import { blue, deepOrange } from "@mui/material/colors";
 const TopNav: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
