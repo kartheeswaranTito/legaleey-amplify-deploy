@@ -34,11 +34,11 @@ import NewButton from "../new-button/newbutton";
 import CloseIcon from "@mui/icons-material/CloseOutlined";
 import Image from "next/image";
 import file_image from "../../../../public/fileIcons/file_image.png";
-
+import Checkbox from "@mui/material/Checkbox";
 
 export default function VerifiedTab() {
   const [view, setView] = React.useState<"table" | "grid">("table");
-  const [rowSelection, setRowSelection] = React.useState(false);
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [selectedRow, setSelectedRow] = React.useState<any>(null);
 
@@ -64,7 +64,7 @@ export default function VerifiedTab() {
     {
       id: 3,
       file_name: "Sample folder 1",
-      uploaded_date:"June 22,2024",
+      uploaded_date: "June 22,2024",
       file_type: "Folder",
       file_size: "-",
     },
@@ -85,7 +85,7 @@ export default function VerifiedTab() {
     {
       id: 6,
       file_name: "Sample 2",
-      uploaded_date:"May 20,2024",
+      uploaded_date: "May 20,2024",
       file_type: "pdf",
       file_size: "200 MB",
     },
@@ -217,18 +217,23 @@ export default function VerifiedTab() {
     );
   };
 
-  const [columnVisibilityModel, setColumnVisibilityModel] =
-    React.useState<GridColumnVisibilityModel>({
-      actions: true,
-    });
+  const handleCheckboxChange = (id: number, checked: boolean) => {
+    setSelectedRows((prevSelectedRows) =>
+      checked
+        ? [...prevSelectedRows, id]
+        : prevSelectedRows.filter((rowId) => rowId !== id)
+    );
+  };
 
   const handleRowSelectionChange = (selectionModel: any) => {
-    setRowSelection(selectionModel.length > 0);
-    setColumnVisibilityModel((prevModel) => ({
-      ...prevModel,
-      actions: selectionModel.length === 0,
-    }));
+    setSelectedRows(selectionModel);
   };
+
+  React.useEffect(() => {
+    if (view === "table") {
+      setSelectedRows([]);
+    }
+  }, [view]);
 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
@@ -246,7 +251,7 @@ export default function VerifiedTab() {
       >
         {data.length > 0 && (
           <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 2 }}>
-            {!rowSelection ? (
+            {!selectedRows.length ? (
               <>
                 <IconButton
                   onClick={() => handleViewToggle("table")}
@@ -289,13 +294,10 @@ export default function VerifiedTab() {
               <DataGrid
                 rows={data}
                 columns={columns}
-                columnVisibilityModel={columnVisibilityModel}
-                onColumnVisibilityModelChange={(newModel) =>
-                  setColumnVisibilityModel(newModel)
-                }
-                onRowSelectionModelChange={(selectionModel) =>
-                  handleRowSelectionChange(selectionModel)
-                }
+                columnVisibilityModel={{
+                  actions: selectedRows.length === 0,
+                }}
+                onRowSelectionModelChange={handleRowSelectionChange}
                 initialState={{
                   pagination: {
                     paginationModel: {
@@ -315,49 +317,49 @@ export default function VerifiedTab() {
               />
             </Box>
           ) : (
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
               {data.map((item) => (
                 <Paper
                   key={item.id}
                   sx={{
                     padding: 2,
                     height: 282,
-                    Width: 267,
-                    backgroundColor: "#F2F4F7",
-                    borderRadius:'15px'
+                    width: 267,
+                    backgroundColor: '#F2F4F7',
+                    borderRadius: '15px',
+                    position: 'relative'
                   }}
                 >
+                  <Checkbox
+                    checked={selectedRows.includes(item.id)}
+                    onChange={(e) => handleCheckboxChange(item.id, e.target.checked)}
+                    sx={{ position: 'absolute', top: 8, left: 8 }}
+                  />
                   <Box
                     sx={{
-                      
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexDirection: "column",
-                      height: "180px",
-                      width: "240",
-                      backgroundColor:"#FFFFFF"
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexDirection: 'column',
+                      height: '180px',
+                      width: '240px',
+                      backgroundColor: '#FFFFFF',
                     }}
                   >
-                    {getFileIcon(item.file_type, 54, 62)} 
+                    {getFileIcon(item.file_type, 54, 62)}
                   </Box>
-                  <Box
-                    sx={{ display: "flex", flexDirection: "column",mt:2 }}
-                  >
-                    {/* First Row: Icon and File Name */}
-                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
                       {getFileIcon(item.file_type)}
-                      <Typography sx={{ marginLeft: 1,fontWeight:'bold' }}>
+                      <Typography sx={{ marginLeft: 1, fontWeight: 'bold' }}>
                         {item.file_name}.{item.file_type}
                       </Typography>
                     </Box>
-
-                    {/* Second Row: Uploaded Date and Actions Menu */}
                     <Box
                       sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
                       }}
                     >
                       <Typography>
@@ -449,10 +451,6 @@ export default function VerifiedTab() {
                 <Image
                   src={file_image}
                   alt="Picture of the author"
-                  // width={500} automatically provided
-                  // height={500} automatically provided
-                  // blurDataURL="data:..." automatically provided
-                  // placeholder="blur" // Optional blur-up while loading
                 />
               </Box>
 
