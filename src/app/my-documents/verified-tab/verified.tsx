@@ -32,6 +32,9 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
 import NewButton from "../new-button/newbutton";
 import CloseIcon from "@mui/icons-material/CloseOutlined";
+import Image from "next/image";
+import file_image from "../../../../public/fileIcons/file_image.png";
+
 
 export default function VerifiedTab() {
   const [view, setView] = React.useState<"table" | "grid">("table");
@@ -47,59 +50,61 @@ export default function VerifiedTab() {
     {
       id: 1,
       file_name: "Sample 1",
-      uploaded_date: "21/02/2024",
+      uploaded_date: "June 22,2024",
       file_type: "pdf",
       file_size: "180 MB",
     },
     {
       id: 2,
       file_name: "File1",
-      uploaded_date: "21/02/2024",
+      uploaded_date: "July 22,2024",
       file_type: "docx",
       file_size: "10 MB",
     },
     {
       id: 3,
       file_name: "Sample folder 1",
-      uploaded_date: "25/02/2024",
+      uploaded_date:"June 22,2024",
       file_type: "Folder",
       file_size: "-",
     },
     {
       id: 4,
       file_name: "File 2",
-      uploaded_date: "21/02/2024",
+      uploaded_date: "June 12,2024",
       file_type: "docx",
       file_size: "200 MB",
     },
     {
       id: 5,
       file_name: "Sample folder 2",
-      uploaded_date: "27/02/2024",
+      uploaded_date: "April 22,2024",
       file_type: "Folder",
       file_size: "-",
     },
     {
       id: 6,
       file_name: "Sample 2",
-      uploaded_date: "23/02/2024",
+      uploaded_date:"May 20,2024",
       file_type: "pdf",
       file_size: "200 MB",
     },
   ];
 
   const getFileIcon = (
-    fileType: string, 
-    width: number = 24, 
+    fileType: string,
+    width: number = 24,
     height: number = 24
   ) => {
     const iconStyles = { width, height, marginRight: 8 };
-  
+
     switch (fileType) {
       case "pdf":
         return <PictureAsPdf style={{ ...iconStyles, color: "#DC362E" }} />;
       case "docx":
-        return <ArticleOutlinedIcon style={{ ...iconStyles, color: "#3473DD" }} />;
+        return (
+          <ArticleOutlinedIcon style={{ ...iconStyles, color: "#3473DD" }} />
+        );
       case "Folder":
         return <Folder style={{ ...iconStyles, color: "#79808A" }} />;
       default:
@@ -312,17 +317,55 @@ export default function VerifiedTab() {
           ) : (
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
               {data.map((item) => (
-                <Paper key={item.id} sx={{ padding: 2, minWidth: 200 }}>
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
-                    {getFileIcon(item.file_type)}
-                    <Typography variant="h6">{item.file_name}</Typography>
+                <Paper
+                  key={item.id}
+                  sx={{
+                    padding: 2,
+                    height: 282,
+                    Width: 267,
+                    backgroundColor: "#F2F4F7",
+                    borderRadius:'15px'
+                  }}
+                >
+                  <Box
+                    sx={{
+                      
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      height: "180px",
+                      width: "240",
+                      backgroundColor:"#FFFFFF"
+                    }}
+                  >
+                    {getFileIcon(item.file_type, 54, 62)} 
                   </Box>
-                  <Typography>Uploaded Date: {item.uploaded_date}</Typography>
-                  <Typography>File Type: {item.file_type}</Typography>
-                  <Typography>File Size: {item.file_size}</Typography>
-                  <div>
-                    <ActionsMenu row={item} />
-                  </div>
+                  <Box
+                    sx={{ display: "flex", flexDirection: "column",mt:2 }}
+                  >
+                    {/* First Row: Icon and File Name */}
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                      {getFileIcon(item.file_type)}
+                      <Typography sx={{ marginLeft: 1,fontWeight:'bold' }}>
+                        {item.file_name}.{item.file_type}
+                      </Typography>
+                    </Box>
+
+                    {/* Second Row: Uploaded Date and Actions Menu */}
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Typography>
+                        Uploaded Date: {item.uploaded_date}
+                      </Typography>
+                      <ActionsMenu row={item} />
+                    </Box>
+                  </Box>
                 </Paper>
               ))}
             </Box>
@@ -383,12 +426,12 @@ export default function VerifiedTab() {
                   padding: 2,
                 }}
               >
-             {getFileIcon(selectedRow.file_type, 49, 56)}
+                {getFileIcon(selectedRow.file_type, 49, 56)}
                 <Typography variant="body2" sx={{ mt: 1 }}>
                   {selectedRow.file_name}
                 </Typography>
               </Box>
-                <hr/>
+              <hr />
               <Box
                 sx={{
                   mt: 2,
@@ -403,17 +446,46 @@ export default function VerifiedTab() {
                   mb: 2,
                 }}
               >
-                image
+                <Image
+                  src={file_image}
+                  alt="Picture of the author"
+                  // width={500} automatically provided
+                  // height={500} automatically provided
+                  // blurDataURL="data:..." automatically provided
+                  // placeholder="blur" // Optional blur-up while loading
+                />
               </Box>
 
               <hr />
-              <Typography variant="body1" sx={{ mt: 2, fontWeight: "bold",color:"#393940" }}>File Details</Typography>
-              <Typography variant="body1" sx={{ mt: 2, fontWeight: "bold",color:"#393940" }}>Type </Typography>
-              <Typography  sx={{ mt: 2 }}>{selectedRow.file_type}</Typography>
-              <Typography variant="body1" sx={{ mt: 2, fontWeight: "bold",color:"#393940" }}>Size</Typography>
-              <Typography  sx={{ mt: 2 }}> {selectedRow.file_size}</Typography>
-              <Typography variant="body1" sx={{ mt: 2, fontWeight: "bold",color:"#393940" }}>Uploaded Date</Typography>
-              <Typography  sx={{ mt: 2 }}>{selectedRow.uploaded_date}</Typography>
+              <Typography
+                variant="body1"
+                sx={{ mt: 2, fontWeight: "bold", color: "#393940" }}
+              >
+                File Details
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{ mt: 2, fontWeight: "bold", color: "#393940" }}
+              >
+                Type{" "}
+              </Typography>
+              <Typography sx={{ mt: 2 }}>{selectedRow.file_type}</Typography>
+              <Typography
+                variant="body1"
+                sx={{ mt: 2, fontWeight: "bold", color: "#393940" }}
+              >
+                Size
+              </Typography>
+              <Typography sx={{ mt: 2 }}> {selectedRow.file_size}</Typography>
+              <Typography
+                variant="body1"
+                sx={{ mt: 2, fontWeight: "bold", color: "#393940" }}
+              >
+                Uploaded Date
+              </Typography>
+              <Typography sx={{ mt: 2 }}>
+                {selectedRow.uploaded_date}
+              </Typography>
             </>
           )}
         </Box>
