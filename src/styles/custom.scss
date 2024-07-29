@@ -6,7 +6,7 @@ $primary-color: #1469FB;
 $secondary-color: #ffffff;
 $background-color: #f4f4f4;
 $font-stack: 'Roboto', sans-serif;
-$text-color: #333333;
+$text-color: #393940;;
 
 // Mixins
 @mixin flex-center {
@@ -42,7 +42,7 @@ body {
   }
   
 h1, h2, h3, h4, h5, h6 {
-  color: $primary-color;
+  color: $text-color;
   font-family: $font-stack;
 }
 
