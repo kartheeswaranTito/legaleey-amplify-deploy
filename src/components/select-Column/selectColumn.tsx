@@ -5,18 +5,21 @@ import { Close, Edit } from "@mui/icons-material";
 import ColumnName from "./columnName";
 
 const drawerWidth = "300px";
-function SelectColumn() {
-	const [selectColumnOpen, setSelectColumnOpen] = useState(false);
+interface SelectColumnProps {
+	onSelectColumnChange: Function;
+	selectColumnOpen: boolean | undefined;
+}
+
+const SelectColumn: React.FC<SelectColumnProps> = ({
+	onSelectColumnChange,
+	selectColumnOpen,
+}) => {
 	const [column1Name, setColumn1Name] = useState("Party");
 	const [column2Name, setColumn2Name] = useState("Clause Number");
 	const [column3Name, setColumn3Name] = useState("Jurisdiction");
 	const [column4Name, setColumn4Name] = useState("Governing Law");
 	const [column5Name, setColumn5Name] = useState("Execution Date");
 	const [column6Name, setColumn6Name] = useState("Termination Date");
-
-	function handleSelectColumnChange(nowOpen: boolean) {
-		setSelectColumnOpen(nowOpen);
-	}
 
 	function handleColumnName1(newName: string) {
 		setColumn1Name(newName);
@@ -38,16 +41,13 @@ function SelectColumn() {
 	}
 	return (
 		<>
-			<Button onClick={() => handleSelectColumnChange(true)}>
-				Open Select Column
-			</Button>
 			<Drawer
 				open={selectColumnOpen}
-				onClose={() => handleSelectColumnChange(false)}
+				onClose={() => onSelectColumnChange(false)}
 				anchor='right'
 				sx={{
 					width: drawerWidth,
-					zIndex: -1,
+					zIndex: 2,
 					flexShrink: 0,
 					[`& .MuiDrawer-paper`]: {
 						width: drawerWidth,
@@ -80,7 +80,7 @@ function SelectColumn() {
 						>
 							Choose Column to Display
 						</Typography>
-						<IconButton onClick={() => handleSelectColumnChange(false)}>
+						<IconButton onClick={() => onSelectColumnChange(false)}>
 							<Close />
 						</IconButton>
 					</Box>
@@ -112,6 +112,6 @@ function SelectColumn() {
 			</Drawer>
 		</>
 	);
-}
+};
 
 export default SelectColumn;

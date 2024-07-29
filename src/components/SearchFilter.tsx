@@ -21,9 +21,17 @@ import SliderInput from "./sliderInput";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { title } from "process";
 
-const SearchFilter: React.FC = () => {
+interface SearchFilerProps {
+	onSearchFilterChange: Function;
+	openFilter: boolean;
+}
+
+const SearchFilter: React.FC<SearchFilerProps> = ({
+	onSearchFilterChange,
+	openFilter,
+}) => {
 	const searchFilterWidth = 300;
-	const [openFilter, setOpenFilter] = useState(false);
+
 	const [select1Value, setSelect1Value] = useState("");
 	const [select2Value, setSelect2Value] = useState("");
 	const [select3Value, setSelect3Value] = useState("");
@@ -32,13 +40,6 @@ const SearchFilter: React.FC = () => {
 	const [slider1Value, setSlider1Value] = React.useState<number[]>([
 		1900, 2024,
 	]);
-
-	function handleFilterOpen() {
-		setOpenFilter(true);
-	}
-	function handleFilterClose() {
-		setOpenFilter(false);
-	}
 
 	function handleSelect1Change(event: SelectChangeEvent) {
 		setSelect1Value(event.target.value as string);
@@ -58,7 +59,6 @@ const SearchFilter: React.FC = () => {
 
 	return (
 		<>
-			<Button onClick={handleFilterOpen}>open filter</Button>
 			<Drawer
 				sx={{
 					width: searchFilterWidth,
@@ -67,6 +67,7 @@ const SearchFilter: React.FC = () => {
 						width: searchFilterWidth,
 						boxSizing: "border-box",
 					},
+					zIndex: 2,
 				}}
 				variant='persistent'
 				anchor='left'
@@ -99,7 +100,7 @@ const SearchFilter: React.FC = () => {
 						<FilterAltIcon sx={{ paddingRight: "5px" }} />
 						<Typography>Filters</Typography>
 					</Box>
-					<IconButton onClick={handleFilterClose}>
+					<IconButton onClick={() => onSearchFilterChange(false)}>
 						<FirstPageIcon />
 					</IconButton>
 				</Box>
