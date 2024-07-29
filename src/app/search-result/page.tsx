@@ -174,6 +174,7 @@ export default function SearchResult() {
 	const [selectColumnOpen, setSelectColumnOpen] = useState(false);
 	const [openFilter, setOpenFilter] = useState(false);
 	const handleOpen = () => setOpen(true);
+	const [filterMargin, setfilterMargin] = useState("0px");
 
 	const handleClose = () => setOpen(false);
 	function handleSelectColumnChange(nowOpen: boolean) {
@@ -181,6 +182,14 @@ export default function SearchResult() {
 	}
 	function handleFilterChange(nowOpen: boolean) {
 		setOpenFilter(nowOpen);
+		setDataGridMargin(nowOpen);
+	}
+	function setDataGridMargin(openFilter: boolean) {
+		if (openFilter) {
+			setfilterMargin("310px");
+		} else {
+			setfilterMargin("0px");
+		}
 	}
 
 	return (
@@ -199,7 +208,7 @@ export default function SearchResult() {
 							item
 							xs={2}
 						>
-							<Button
+							<Box
 								sx={{
 									display: "flex",
 									alignItems: "center",
@@ -208,13 +217,18 @@ export default function SearchResult() {
 								}}
 								onClick={() => handleFilterChange(true)}
 							>
-								<FilterIcon sx={{ mr: 1 }} />
-								<Typography>Filters</Typography>
-							</Button>
+								<IconButton>
+									<FilterIcon sx={{ mr: 1 }} />
+									<Typography>Filters</Typography>
+								</IconButton>
+							</Box>
 						</Grid>
 						<Grid
 							item
 							xs={8}
+							sx={{
+								ml: filterMargin,
+							}}
 						>
 							<Breadcrumbs aria-label='breadcrumb'>
 								<Link
@@ -241,6 +255,9 @@ export default function SearchResult() {
 				</Grid>
 				<Grid
 					item
+					sx={{
+						ml: filterMargin,
+					}}
 					xs={12}
 					container
 					justifyContent='space-between'
@@ -301,7 +318,7 @@ export default function SearchResult() {
 				<Grid
 					item
 					xs={12}
-					sx={{ ml: 2, mr: 2 }}
+					sx={{ ml: filterMargin, mr: 2 }}
 				>
 					<Box
 						sx={{
@@ -311,6 +328,7 @@ export default function SearchResult() {
 							backgroundColor: "#E9EEF6",
 							p: 2,
 							borderRadius: "36px",
+							ml: 5,
 						}}
 					>
 						<Typography sx={{ color: "#5F6774", fontWeight: "bold" }}>
@@ -331,7 +349,7 @@ export default function SearchResult() {
 				<Grid
 					item
 					xs={12}
-					sx={{ height: 400, mt: 2 }}
+					sx={{ height: 400, mt: 2, ml: filterMargin }}
 				>
 					<DataGrid
 						rows={data}
