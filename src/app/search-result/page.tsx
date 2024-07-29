@@ -33,6 +33,8 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import InsertDriveIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import SelectColumn from "@/components/select-Column/selectColumn";
 import SearchFilter from "@/components/SearchFilter";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
+
 
 const data = [
 	{
@@ -209,19 +211,22 @@ export default function SearchResult() {
 							xs={2}
 						>
 							<Box
-								sx={{
-									display: "flex",
-									alignItems: "center",
-									backgroundColor: "#E9EEF6",
-									p: 2,
-								}}
-								onClick={() => handleFilterChange(true)}
-							>
-								<IconButton>
-									<FilterIcon sx={{ mr: 1 }} />
-									<Typography>Filters</Typography>
-								</IconButton>
-							</Box>
+  sx={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#E9EEF6",
+    p: 2,
+  }}
+  onClick={() => handleFilterChange(true)}
+>
+  <Box sx={{ display: "flex", alignItems: "center" }}>
+    <FilterIcon sx={{ mr: 1 }} />
+    <Typography>Filters</Typography>
+  </Box>
+  <FirstPageIcon />
+</Box>
+
 						</Grid>
 						<Grid
 							item
