@@ -10,6 +10,7 @@ import {
   Paper,
   Typography,
   Drawer,
+  Grid,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -317,7 +318,7 @@ export default function VerifiedTab() {
               />
             </Box>
           ) : (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
               {data.map((item) => (
                 <Paper
                   key={item.id}
@@ -325,48 +326,61 @@ export default function VerifiedTab() {
                     padding: 2,
                     height: 282,
                     width: 267,
-                    backgroundColor: '#F2F4F7',
-                    borderRadius: '15px',
-                    position: 'relative'
+                    backgroundColor: "#F2F4F7",
+                    borderRadius: "15px",
+                    position: "relative",
                   }}
                 >
                   <Checkbox
                     checked={selectedRows.includes(item.id)}
-                    onChange={(e) => handleCheckboxChange(item.id, e.target.checked)}
-                    sx={{ position: 'absolute', top: 8, left: 8 }}
+                    onChange={(e) =>
+                      handleCheckboxChange(item.id, e.target.checked)
+                    }
+                    sx={{ position: "absolute", top: 8, left: 8 }}
                   />
                   <Box
                     sx={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexDirection: 'column',
-                      height: '180px',
-                      width: '240px',
-                      backgroundColor: '#FFFFFF',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      height: "180px",
+                      width: "240px",
+                      backgroundColor: "#FFFFFF",
                     }}
                   >
                     {getFileIcon(item.file_type, 54, 62)}
                   </Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      {getFileIcon(item.file_type)}
-                      <Typography sx={{ marginLeft: 1, fontWeight: 'bold' }}>
-                        {item.file_name}.{item.file_type}
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Typography>
-                        Uploaded Date: {item.uploaded_date}
-                      </Typography>
-                      <ActionsMenu row={item} />
-                    </Box>
+                  <Box sx={{ mt: 2, ml: 2 }}>
+                    <Grid container spacing={2} alignItems="center">
+                      <Grid
+                        item
+                        xs={1}
+                        sx={{ display: "flex", justifyContent: "center" }}
+                      >
+                        {getFileIcon(item.file_type)}
+                      </Grid>
+                      <Grid
+                        item
+                        xs={10}
+                        sx={{ display: "flex", flexDirection: "column" }}
+                      >
+                        <Typography sx={{ fontWeight: "bold" }}>
+                          {item.file_name}
+                          {item.file_type !== "Folder" && `.${item.file_type}`}
+                        </Typography>
+                        <Typography sx={{ color: "#7E7E83", fontSize: "12px" }}>
+                          Uploaded Date: {item.uploaded_date}
+                        </Typography>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={1}
+                        sx={{ display: "flex", justifyContent: "flex-end" }}
+                      >
+                        <ActionsMenu row={item} />
+                      </Grid>
+                    </Grid>
                   </Box>
                 </Paper>
               ))}
@@ -448,10 +462,7 @@ export default function VerifiedTab() {
                   mb: 2,
                 }}
               >
-                <Image
-                  src={file_image}
-                  alt="Picture of the author"
-                />
+                <Image src={file_image} alt="Picture of the author" />
               </Box>
 
               <hr />
