@@ -59,6 +59,18 @@ const TopNav: React.FC = () => {
 				<Box
 					sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
 				>
+					<Box
+						sx={{
+							marginRight: "10px",
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "right",
+							width: "250px",
+						}}
+					>
+						<Typography color='#000'>Turn off Notifications</Typography>
+						<Switch />
+					</Box>
 					<HelpOutlineIcon sx={{ color: "black", marginRight: 1 }} />
 
 					<IconButton

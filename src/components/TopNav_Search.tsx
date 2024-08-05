@@ -121,6 +121,18 @@ const TopNavSearch: React.FC = () => {
 							justifyContent: "flex-end",
 						}}
 					>
+						<Box
+							sx={{
+								marginRight: "10px",
+								display: "flex",
+								alignItems: "center",
+								width: "200px",
+								justifyContent: "right",
+							}}
+						>
+							<Typography color='#000'>Turn off Notifications</Typography>
+							<Switch />
+						</Box>
 						<Link href='/home'>
 							<Button
 								variant='outlined'
@@ -134,6 +146,7 @@ const TopNavSearch: React.FC = () => {
 								Back to Home
 							</Button>
 						</Link>
+
 						<HelpOutlineIcon sx={{ color: "#79808A", ml: 4 }} />
 						<Tooltip title='Account settings'>
 							<IconButton
