@@ -14,6 +14,9 @@ import {
 	ListItemIcon,
 	Button,
 	TextField,
+	Popover,
+	Typography,
+	Switch,
 } from "@mui/material";
 import {
 	SettingsOutlined,
@@ -107,80 +110,159 @@ const TopNav: React.FC = () => {
 						</IconButton>
 					</Tooltip>
 				</Box>
-				<Menu
-					anchorEl={anchorEl}
-					id='account-menu'
+				<Popover
+					id='profile-popover'
 					open={open}
+					anchorEl={anchorEl}
 					onClose={handleClose}
-					onClick={handleClose}
-					PaperProps={{
-						elevation: 0,
-						sx: {
-							overflow: "visible",
-							filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-							mt: 1.5,
-							"& .MuiAvatar-root": {
-								width: 32,
-								height: 32,
-								ml: -0.5,
-								mr: 1,
-							},
-							"&::before": {
-								content: '""',
-								display: "block",
-								position: "absolute",
-								top: 0,
-								right: 14,
-								width: 10,
-								height: 10,
-								bgcolor: "background.paper",
-								transform: "translateY(-50%) rotate(45deg)",
-								zIndex: 0,
-							},
-						},
+					anchorOrigin={{
+						vertical: "bottom",
+						horizontal: "right",
 					}}
-					transformOrigin={{ horizontal: "right", vertical: "top" }}
-					anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+					transformOrigin={{
+						vertical: "top",
+						horizontal: "right",
+					}}
 				>
-					<MenuItem onClick={handleClose}>
-						<Avatar sx={{ bgcolor: "#1469fb", width: 32, height: 32 }} />
-					</MenuItem>
-					<Divider />
-					<MenuItem onClick={handleClose}>
-						<ListItemIcon>
-							<AccountCircleOutlined />
-						</ListItemIcon>
-						Personal Information
-					</MenuItem>
-					<MenuItem onClick={handleClose}>
-						<ListItemIcon>
-							<SettingsOutlined fontSize='small' />
-						</ListItemIcon>
-						Account Settings
-					</MenuItem>
-					<MenuItem onClick={handleClose}>
-						<ListItemIcon>
-							<ShieldOutlined fontSize='small' />
-						</ListItemIcon>
-						Login & Security
-					</MenuItem>
-					<Divider />
-					<MenuItem onClick={handleClose}>
-						<ListItemIcon>
-							<Logout fontSize='small' />
-						</ListItemIcon>
-						<Button
-							variant='outlined'
-							color='error'
+					<Box
+						sx={{
+							width: 300,
+							padding: "10px",
+						}}
+					>
+						<Box
 							sx={{
-								width: "200px",
+								padding: "10px",
+								display: "flex",
+								alignItems: "center",
 							}}
-							onClick={signOut}
+							onClick={handleClose}
 						>
-							SIGN OUT
-						</Button>
-					</MenuItem>
-				</Menu>
+							<Avatar
+								sx={{
+									bgcolor: "#1469fb",
+									width: 32,
+									height: 32,
+									marginRight: "10px",
+									alignSelf: "center",
+								}}
+							/>
+							<Box
+								sx={{
+									display: "flex",
+									flexDirection: "column",
+								}}
+							>
+								<Typography
+									sx={{
+										fontSize: "1rem",
+										fontWeight: "bold",
+									}}
+								>
+									User Name
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: ".75rem",
+									}}
+								>
+									testuserprofile@testmail.com
+								</Typography>
+							</Box>
+						</Box>
+						<Divider variant='middle' />
+						<Box
+							sx={{
+								paddingY: "15px",
+
+								display: "flex",
+								flexDirection: "column",
+							}}
+						>
+							<Box
+								sx={{
+									display: "flex",
+									gap: "10px",
+									margin: "10px",
+								}}
+								onClick={handleClose}
+							>
+								<AccountCircleOutlined />
+								<Typography>Profile information</Typography>
+							</Box>
+							<Box
+								sx={{
+									display: "flex",
+									gap: "10px",
+									margin: "10px",
+								}}
+								onClick={handleClose}
+							>
+								<SettingsOutlined />
+								<Typography>Account Settings</Typography>
+							</Box>
+							<Box
+								sx={{
+									display: "flex",
+									gap: "10px",
+									margin: "10px",
+								}}
+								onClick={handleClose}
+							>
+								<ShieldOutlined />
+								<Typography>Login & Security</Typography>
+							</Box>
+						</Box>
+						<Divider variant='middle' />
+						<Box
+							sx={{
+								padding: "10px",
+								display: "flex",
+							}}
+						>
+							<Box
+								sx={{
+									width: "80%",
+								}}
+							>
+								<Typography
+									sx={{
+										fontSize: ".9rem",
+										fontWeight: 500,
+									}}
+								>
+									Turn of pop-up notification
+								</Typography>
+								<Typography
+									sx={{
+										fontSize: "0.7rem",
+									}}
+								>
+									Only turn-off toast notifications for uploaded, approved and
+									rejected files
+								</Typography>
+							</Box>
+							<Switch />
+						</Box>
+						<Divider variant='middle' />
+						<Box
+							sx={{
+								padding: "10px",
+							}}
+						>
+							<Button
+								variant='outlined'
+								color='error'
+								sx={{
+									width: "100%",
+								}}
+								onClick={signOut}
+							>
+								SignOut
+							</Button>
+						</Box>
+					</Box>
+				</Popover>
 			</Toolbar>
 		</AppBar>
 	);
