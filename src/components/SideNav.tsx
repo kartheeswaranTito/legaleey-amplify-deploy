@@ -159,6 +159,10 @@ const SideNav: React.FC = () => {
 							backgroundColor: pathname === "/home" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon
@@ -190,6 +194,10 @@ const SideNav: React.FC = () => {
 								pathname === "/my-documents" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
@@ -221,6 +229,10 @@ const SideNav: React.FC = () => {
 								pathname === "/trash" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
@@ -252,6 +264,10 @@ const SideNav: React.FC = () => {
 								pathname === "/search-history" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
