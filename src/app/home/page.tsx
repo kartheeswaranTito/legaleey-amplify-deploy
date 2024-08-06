@@ -73,11 +73,19 @@ export default function Home() {
           Welcome Vikas! Let&apos;s get started.
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 3,
+            mt: 2,
+          }}
+        >
           <Box
             sx={{
-              width: '100%',
-              maxWidth: '800px',
+              width: "100%",
+              maxWidth: "800px",
               boxShadow: 3,
               borderRadius: 2,
               textAlign: "left",
@@ -100,8 +108,8 @@ export default function Home() {
           </Box>
           <Box
             sx={{
-              width: '100%',
-              maxWidth: '800px',
+              width: "100%",
+              maxWidth: "800px",
               boxShadow: 3,
               borderRadius: 2,
               textAlign: "left",
@@ -121,33 +129,31 @@ export default function Home() {
                 />
               }
               linkHref="#"
-              
             />
           </Box>
-         
-            <Box
-              component="a"
-              href="#"
-              sx={{
-                display: "inline-flex",
-                alignItems: "center",
-                backgroundColor: "#e3f2fd",
-                borderRadius: "8px ",
-                border: "2px dashed #397EF3",
-                width: "798px",
-                height: "58px",
-                color: "#1a73e8",
-                fontWeight: "bold",
-                textDecoration: "none",
-                justifyContent: "center",
-              }}
-            >
-              <CardGiftcardIcon sx={{ mr: 1 }} />
-              <Typography>Find What&apos;s New Here!</Typography>
-            </Box>
+
+          <Box
+            component="a"
+            href="#"
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              backgroundColor: "#e3f2fd",
+              borderRadius: "8px ",
+              border: "2px dashed #397EF3",
+              width: "798px",
+              height: "58px",
+              color: "#1a73e8",
+              fontWeight: "bold",
+              textDecoration: "none",
+              justifyContent: "center",
+            }}
+          >
+            <CardGiftcardIcon sx={{ mr: 1 }} />
+            <Typography>Find What&apos;s New Here!</Typography>
           </Box>
         </Box>
-      
+      </Box>
     </CommonLayout_Home>
   );
 }

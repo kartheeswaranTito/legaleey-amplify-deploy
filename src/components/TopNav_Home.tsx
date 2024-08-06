@@ -25,12 +25,12 @@ import {
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
-import { useAuthenticator } from "@aws-amplify/ui-react"; 
+import { useAuthenticator } from "@aws-amplify/ui-react";
 
 const TopNav: React.FC = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { signOut } = useAuthenticator(); 
+  const { signOut } = useAuthenticator();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -41,7 +41,10 @@ const TopNav: React.FC = () => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#F7F9FC", borderRadius: "0 0 0 20px"}}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "#F7F9FC", borderRadius: "0 0 0 20px", pb: 1 }}
+    >
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           {/* Top Navigation */}
@@ -94,7 +97,7 @@ const TopNav: React.FC = () => {
                 height: 10,
                 bgcolor: "background.paper",
                 transform: "translateY(-50%) rotate(45deg)",
-               zIndex: 0,
+                zIndex: 0,
               },
             },
           }}
@@ -127,7 +130,7 @@ const TopNav: React.FC = () => {
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
-          <ListItemIcon>
+            <ListItemIcon>
               <Logout fontSize="small" />
             </ListItemIcon>
             <Button
@@ -139,8 +142,6 @@ const TopNav: React.FC = () => {
               onClick={signOut}
             >
               SIGN OUT
-
-
             </Button>
           </MenuItem>
         </Menu>
