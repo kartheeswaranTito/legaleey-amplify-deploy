@@ -4,6 +4,7 @@ import React, { ReactNode } from 'react';
 import TopNav_Home from './TopNav_Home';
 import SideNav from './SideNav';
 import { Authenticator } from '@aws-amplify/ui-react';
+import { Box } from '@mui/material';
 
 interface CommonLayout_HomeProps {
   children: ReactNode;
@@ -12,16 +13,36 @@ interface CommonLayout_HomeProps {
 const CommonLayout_Home: React.FC<CommonLayout_HomeProps> = ({ children }) => {
   return (
     <Authenticator.Provider>
-    <div>
+    {/* <div>
       <TopNav_Home />
       <div style={{  }}>
         <SideNav />
-        {/* <main style={{  }}> */}
-        <main style={{ marginLeft: '260px',marginTop:'15px' }}>
+      
+       
           {children}
-        </main>
+       
       </div>
-    </div>
+    </div> */}
+     <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+   
+       <TopNav_Home />
+       <Box sx={{ display: 'flex', height: '100vh' }}>
+      <SideNav />
+        <Box
+          sx={{
+            flexGrow: 1,
+            bgcolor: 'background.default',
+            borderTopLeftRadius:'30px', 
+            mt: -1, 
+            ml: -1, 
+           p:1,
+           
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    </Box>
     </Authenticator.Provider>
   );
 };

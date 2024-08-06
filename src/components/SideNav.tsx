@@ -27,7 +27,8 @@ import {
 import MyDocumnets from "../app/my-documents/page";
 import { withRouter } from "next/router";
 
-const drawerWidth = 240;
+const drawerWidth = 256;
+
 
 const SideNav: React.FC = () => {
 	const router = useRouter();
@@ -66,13 +67,14 @@ const SideNav: React.FC = () => {
 					width: drawerWidth,
 					boxSizing: "border-box",
 					backgroundColor: "#F7F9FC",
+					border:"none",
 				},
 			}}
 		>
 			<Toolbar
 				sx={{
 					backgroundColor: "#F7F9FC",
-					borderRadius: "0 20px 0 0",
+					
 				}}
 			>
 				<Typography
@@ -145,7 +147,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 					{/* </Paper> */}
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/home")}
 						sx={{
 							"&:hover": {
@@ -175,7 +177,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/my-documents")}
 						sx={{
 							"&:hover": {
@@ -206,7 +208,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/trash")}
 						sx={{
 							"&:hover": {
@@ -237,7 +239,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/search-history")}
 						sx={{
 							"&:hover": {
