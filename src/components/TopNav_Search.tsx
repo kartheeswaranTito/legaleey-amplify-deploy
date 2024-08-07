@@ -31,10 +31,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import HomeIcon from "@mui/icons-material/HomeOutlined";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
-interface TopNavSeacrhProps {
-	searchmovement: String;
-}
-const TopNavSearch: React.FC<TopNavSeacrhProps> = ({ searchmovement }) => {
+const TopNavSearch = () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const { signOut } = useAuthenticator();
@@ -91,7 +88,6 @@ const TopNavSearch: React.FC<TopNavSeacrhProps> = ({ searchmovement }) => {
 								borderRadius: "28px",
 								padding: "10px 17px",
 								gap: "8px",
-								ml: searchmovement,
 							}}
 						>
 							<SearchIcon sx={{ color: "#5F6774" }} />

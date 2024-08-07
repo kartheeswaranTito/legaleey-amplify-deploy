@@ -6,17 +6,13 @@ import TopNav_Search from "./TopNav_Search";
 
 interface SearchLayoutProps {
 	children: ReactNode;
-	searchmovement: String;
 }
 
-const SearchLayout: React.FC<SearchLayoutProps> = ({
-	children,
-	searchmovement,
-}) => {
+const SearchLayout: React.FC<SearchLayoutProps> = ({ children }) => {
 	return (
 		<Authenticator.Provider>
 			<div>
-				<TopNav_Search searchmovement={searchmovement} />
+				<TopNav_Search />
 				<main>{children}</main>
 			</div>
 		</Authenticator.Provider>

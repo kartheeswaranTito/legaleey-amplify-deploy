@@ -176,7 +176,6 @@ export default function SearchResult() {
 	const [openFilter, setOpenFilter] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const [filterMargin, setfilterMargin] = useState("0px");
-	const [searchmovement, setSearchMovement] = useState("0px");
 
 	const handleClose = () => setOpen(false);
 	function handleSelectColumnChange(nowOpen: boolean) {
@@ -190,15 +189,13 @@ export default function SearchResult() {
 	function setDataGridMargin(openFilter: boolean) {
 		if (openFilter) {
 			setfilterMargin("310px");
-			setSearchMovement("80px");
 		} else {
 			setfilterMargin("0px");
-			setSearchMovement("0px");
 		}
 	}
 
 	return (
-		<SearchLayout searchmovement={searchmovement}>
+		<SearchLayout>
 			<Grid>
 				<Grid
 					item
@@ -209,33 +206,37 @@ export default function SearchResult() {
 						container
 						alignItems='center'
 					>
-						<Grid
-							item
-							xs={2}
-						>
-							<Box
-								sx={{
-									display: "flex",
-									alignItems: "center",
-									justifyContent: "space-between",
-									backgroundColor: "#E9EEF6",
-									p: 2,
-								}}
-								onClick={() => handleFilterChange(true)}
+						{openFilter ? (
+							<></>
+						) : (
+							<Grid
+								item
+								xs={2}
 							>
-								<Box sx={{ display: "flex", alignItems: "center" }}>
-									<FilterIcon sx={{ mr: 1 }} />
-									<Typography>Filters</Typography>
+								<Box
+									sx={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "space-between",
+										backgroundColor: "#E9EEF6",
+										p: 2,
+									}}
+									onClick={() => handleFilterChange(true)}
+								>
+									<Box sx={{ display: "flex", alignItems: "center" }}>
+										<FilterIcon sx={{ mr: 1 }} />
+										<Typography>Filters</Typography>
+									</Box>
+									<FirstPageIcon />
 								</Box>
-								<FirstPageIcon />
-							</Box>
-						</Grid>
+							</Grid>
+						)}
 						<Grid
 							item
 							xs={8}
 							sx={{
 								ml: filterMargin,
-								padding: "0px",
+								paddingY: 2,
 							}}
 						>
 							<Breadcrumbs aria-label='breadcrumb'>
