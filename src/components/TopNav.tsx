@@ -122,7 +122,7 @@ const TopNav: React.FC = () => {
 						</IconButton>
 					</Tooltip>
 				</Box>
-<Popover
+				<Popover
 					id='profile-popover'
 					open={open}
 					anchorEl={anchorEl}
@@ -273,6 +273,8 @@ const TopNav: React.FC = () => {
 								SignOut
 							</Button>
 						</Box>
+					</Box>
+				</Popover>
 			</Toolbar>
 		</AppBar>
 	);
