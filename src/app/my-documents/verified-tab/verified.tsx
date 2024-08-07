@@ -157,6 +157,7 @@ export default function VerifiedTab() {
       field: "actions",
       headerName: "",
       width: 100,
+      disableColumnMenu: true,
       renderCell: (params: GridRenderCellParams<any>) => (
         <ActionsMenu row={params.row} />
       ),

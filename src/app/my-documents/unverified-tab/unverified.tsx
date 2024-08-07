@@ -250,16 +250,7 @@ export default function UnverifiedTab() {
             <DoneAllIcon />
             Verify File
           </Button>
-          <Button onClick={() => handleOpenInfoDialog(params.row)}>
-            <InfoOutlinedIcon
-              sx={{
-                color: "#65656B",
-                width: "24px",
-                height: "24px",
-                boxShadow: "0",
-              }}
-            />
-          </Button>
+          
           {/* TOOLTIP */}
           <Tooltip
             title="Move to trash"
@@ -281,7 +272,18 @@ export default function UnverifiedTab() {
               },
             }}
           >
-            <Button onClick={() => handleOpenDeleteDialog(params.row)}>
+           <Button onClick={() => handleOpenInfoDialog(params.row)}>
+            <InfoOutlinedIcon
+              sx={{
+                color: "#65656B",
+                width: "24px",
+                height: "24px",
+                boxShadow: "0",
+              }}
+            />
+          </Button>
+          </Tooltip>
+          <Button onClick={() => handleOpenDeleteDialog(params.row)}>
               <DeleteOutlineOutlinedIcon
                 sx={{
                   color: "#65656B",
@@ -290,7 +292,6 @@ export default function UnverifiedTab() {
                 }}
               />
             </Button>
-          </Tooltip>
         </Box>
       ),
     },

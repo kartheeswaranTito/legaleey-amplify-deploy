@@ -161,6 +161,7 @@ const InProgressTab = () => {
       field: "action",
       headerName: "",
       width: 600,
+      disableColumnMenu: true,
       headerClassName: "header-spacing",
       cellClassName: "cell-spacing",
       renderCell: (params: any) => {
