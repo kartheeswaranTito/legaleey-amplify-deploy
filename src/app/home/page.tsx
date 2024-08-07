@@ -99,6 +99,7 @@ export default function Home() {
                 <InsertDriveFileOutlinedIcon
                   sx={{
                     fontSize: 50,
+                    color: "#1a73e8",
                     backgroundColor: "#F2F4F7",
                   }}
                 />
