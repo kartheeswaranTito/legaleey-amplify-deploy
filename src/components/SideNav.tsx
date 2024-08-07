@@ -27,7 +27,8 @@ import {
 import MyDocumnets from "../app/my-documents/page";
 import { withRouter } from "next/router";
 
-const drawerWidth = 240;
+const drawerWidth = 256;
+
 
 const SideNav: React.FC = () => {
 	const router = useRouter();
@@ -66,13 +67,14 @@ const SideNav: React.FC = () => {
 					width: drawerWidth,
 					boxSizing: "border-box",
 					backgroundColor: "#F7F9FC",
+					border:"none",
 				},
 			}}
 		>
 			<Toolbar
 				sx={{
 					backgroundColor: "#F7F9FC",
-					borderRadius: "0 20px 0 0",
+					
 				}}
 			>
 				<Typography
@@ -145,7 +147,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 					{/* </Paper> */}
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/home")}
 						sx={{
 							"&:hover": {
@@ -157,6 +159,10 @@ const SideNav: React.FC = () => {
 							backgroundColor: pathname === "/home" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon
@@ -175,7 +181,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/my-documents")}
 						sx={{
 							"&:hover": {
@@ -188,6 +194,10 @@ const SideNav: React.FC = () => {
 								pathname === "/my-documents" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
@@ -206,7 +216,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/trash")}
 						sx={{
 							"&:hover": {
@@ -219,6 +229,10 @@ const SideNav: React.FC = () => {
 								pathname === "/trash" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
@@ -237,7 +251,7 @@ const SideNav: React.FC = () => {
 					</ListItem>
 
 					<ListItem
-						button
+						
 						onClick={() => handleNavigation("/search-history")}
 						sx={{
 							"&:hover": {
@@ -250,6 +264,10 @@ const SideNav: React.FC = () => {
 								pathname === "/search-history" ? "#397EF3" : "transparent",
 							borderRadius: "8px",
 							marginBottom: "3px",
+							width: "220px",
+							height: "50px",
+							justifyContent: "space-between",
+							marginLeft:"10px",  
 						}}
 					>
 						<ListItemIcon>
