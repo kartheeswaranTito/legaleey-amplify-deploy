@@ -45,7 +45,7 @@ const TopNav: React.FC = () => {
 	return (
 		<AppBar
 			position='static'
-			sx={{ backgroundColor: "#F2F4F7", borderRadius: "0 0 0 20px" }}
+			sx={{ backgroundColor: "#F7F4F7", borderRadius: "0 0 0 20px", pb: 1 }}
 		>
 			<Toolbar>
 				<Typography
