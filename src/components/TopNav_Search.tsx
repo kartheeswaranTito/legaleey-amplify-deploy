@@ -87,6 +87,7 @@ const TopNavSearch = () => {
 								backgroundColor: "#E9EEF6",
 								borderRadius: "28px",
 								padding: "10px 17px",
+								marginLeft: "60px",
 								gap: "8px",
 							}}
 						>
