@@ -88,7 +88,7 @@ export default function MyDocuments() {
 			<Box sx={{ padding: 5 }}>
 				<StorageManager
 					acceptedFileTypes={["*"]}
-					path='public/'
+					path={({ identityId }) => `private/${identityId}/`}
 					maxFileCount={1}
 					isResumable
 					components={{
