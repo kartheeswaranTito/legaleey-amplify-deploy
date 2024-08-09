@@ -327,7 +327,7 @@ export default function SearchResult() {
 				<Grid
 					item
 					xs={12}
-					sx={{ ml: filterMargin, mr: 2 }}
+					sx={{ ml: filterMargin, mr: 2,p:2 }}
 				>
 					<Box
 						sx={{

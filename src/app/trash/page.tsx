@@ -134,37 +134,37 @@ export default function Trash() {
 	const handleClose2 = () => setOpen2(false);
 	const getFileIcon = (fileType: string) => {
 		switch (fileType) {
-			case "pdf":
-				return (
-					<PictureAsPdfIcon
-						style={{ width: 24, height: 24, marginRight: 8, color: "#DC362E" }}
-					/>
-				);
-			case "docx":
-				return (
-					<ArticleOutlinedIcon
-						style={{ width: 24, height: 24, marginRight: 8, color: "#3473DD" }}
-					/>
-				);
-			case "Folder":
-				return (
-					<FolderIcon
-						style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
-					/>
-				);
-			default:
-				return (
-					<FolderIcon
-						style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
-					/>
-				);
+		  case "pdf":
+			return (
+			  <PictureAsPdfIcon
+				style={{ width: 24, height: 24, marginRight: 8, color: "#DC362E" }}
+			  />
+			);
+		  case "docx":
+			return (
+			  <ArticleOutlinedIcon
+				style={{ width: 24, height: 24, marginRight: 8, color: "#3473DD" }}
+			  />
+			);
+		  case "Folder":
+			return (
+			  <FolderIcon
+				style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
+			  />
+			);
+		  default:
+			return (
+			  <FolderIcon
+				style={{ width: 24, height: 24, marginRight: 8, color: "#79808A" }}
+			  />
+			);
 		}
-	};
+	  };
 	const columns = [
 		{
 			field: "name",
 			headerName: "Name",
-			width: 225,
+			flex:1,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
 			renderCell: (params: any) => {
@@ -194,21 +194,21 @@ export default function Trash() {
 		{
 			field: "date",
 			headerName: "Date Changed",
-			width: 225,
+			flex:1,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
 		},
 		{
 			field: "size",
 			headerName: "File Size",
-			width: 225,
+			flex:1,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
 		},
 		{
 			field: "originalLocation",
 			headerName: "Original Location",
-			width: 225,
+			flex:1,
 			headerClassName: "header-spacing",
 			cellClassName: "cell-spacing",
 		},
@@ -234,6 +234,7 @@ export default function Trash() {
 	];
 	return (
 		<CommonLayout>
+			
 			<Breadcrumbs aria-label='breadcrumb'>
 				<Link
 					underline='hover'
@@ -260,22 +261,24 @@ export default function Trash() {
 			>
 				Trash
 			</Typography>
+			
 			<Box
 				sx={{
-					mt: 5,
+					mt: 2,
+					mr:2,
 					backgroundColor: "#eee",
 					padding: "15px",
 					display: "flex",
 					justifyContent: "space-between",
 				}}
 			>
-				<Typography sx={{ alignSelf: "center" }}>
+				<Typography sx={{ alignSelf: "center", }}>
 					Items in trash will be deleted after 30 days
 				</Typography>
 				<Button onClick={handleOpen2}>EMPTY TRASH</Button>
 			</Box>
-
-			<Box sx={{ mt: "5px", textAlign: "center" }}>
+			
+			{/* <Box sx={{ mt: "5px", textAlign: "center" }}>
 				{initialRows ? (
 					<DataGrid
 						rows={initialRows}
@@ -300,7 +303,36 @@ export default function Trash() {
 						Nothing in Trash
 					</Typography>
 				)}
-			</Box>
+			</Box> */}
+			 <Box sx={{ height: 400, width: "100%" ,mt:2,pr:2}}>
+			 {initialRows ? (
+              <DataGrid
+                rows={initialRows}
+                columns={columns}
+               
+                initialState={{
+                  pagination: {
+                    paginationModel: {
+                      pageSize: 5,
+                    },
+                  },
+                }}
+                pageSizeOptions={[5]}
+                checkboxSelection
+            
+              />
+			) : (
+				<Typography
+					variant='h6'
+					component='h1'
+					gutterBottom
+					color=' #323B4A'
+				>
+					Nothing in Trash
+				</Typography>
+			)}
+            </Box>
+			
 			<Modal
 				open={open1}
 				onClose={handleClose1}
