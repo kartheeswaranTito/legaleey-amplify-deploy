@@ -12,13 +12,17 @@ import {
 	Divider,
 	Tooltip,
 	ListItemIcon,
+
 	Popover,
+
 	Button,
 	TextField,
 	Typography,
 	Grid,
 	Link,
+
 	Switch,
+
 } from "@mui/material";
 import {
 	SettingsOutlined,
@@ -34,6 +38,7 @@ import HomeIcon from "@mui/icons-material/HomeOutlined";
 import { useAuthenticator } from "@aws-amplify/ui-react";
 
 const TopNavSearch: React.FC = () => {
+
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const { signOut } = useAuthenticator();
@@ -89,6 +94,9 @@ const TopNavSearch: React.FC = () => {
 								backgroundColor: "#E9EEF6",
 								borderRadius: "28px",
 								padding: "10px 17px",
+
+								marginLeft: "60px",
+
 								gap: "8px",
 							}}
 						>
@@ -121,6 +129,7 @@ const TopNavSearch: React.FC = () => {
 							justifyContent: "flex-end",
 						}}
 					>
+
 						<Box
 							sx={{
 								marginRight: "10px",
@@ -133,6 +142,7 @@ const TopNavSearch: React.FC = () => {
 							<Typography color='#000'>Turn off Notifications</Typography>
 							<Switch />
 						</Box>
+
 						<Link href='/home'>
 							<Button
 								variant='outlined'
@@ -318,6 +328,7 @@ const TopNavSearch: React.FC = () => {
 						</Box>
 					</Box>
 				</Popover>
+
 			</Toolbar>
 		</AppBar>
 	);

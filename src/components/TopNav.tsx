@@ -14,9 +14,11 @@ import {
 	ListItemIcon,
 	Button,
 	TextField,
+
 	Popover,
 	Typography,
 	Switch,
+
 } from "@mui/material";
 import {
 	SettingsOutlined,
@@ -46,9 +48,11 @@ const TopNav: React.FC = () => {
 		<AppBar
 			position='static'
 			sx={{
+
 				backgroundColor: "#F7F4F7",
 				borderRadius: "0 0 0 20px ",
 				pb: 1,
+
 			}}
 		>
 			<Toolbar>
@@ -95,6 +99,7 @@ const TopNav: React.FC = () => {
 				<Box
 					sx={{ display: "flex", alignItems: "center", textAlign: "center" }}
 				>
+
 					<Box
 						sx={{
 							marginRight: "20px",
@@ -106,6 +111,7 @@ const TopNav: React.FC = () => {
 						<Typography color='#000'>Turn off Notifications</Typography>
 						<Switch />
 					</Box>
+
 					<HelpOutlineIcon sx={{ color: "black", marginRight: 1 }} />
 					<Tooltip title='Account settings'>
 						<IconButton
@@ -122,6 +128,7 @@ const TopNav: React.FC = () => {
 						</IconButton>
 					</Tooltip>
 				</Box>
+
 				<Popover
 					id='profile-popover'
 					open={open}
@@ -275,6 +282,7 @@ const TopNav: React.FC = () => {
 						</Box>
 					</Box>
 				</Popover>
+
 			</Toolbar>
 		</AppBar>
 	);
