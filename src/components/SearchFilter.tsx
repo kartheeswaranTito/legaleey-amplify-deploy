@@ -66,28 +66,13 @@ const SearchFilter: React.FC<SearchFilerProps> = ({
 					"& .MuiDrawer-paper": {
 						width: searchFilterWidth,
 						boxSizing: "border-box",
+						marginTop: "64px",
 					},
-					zIndex: 2,
 				}}
 				variant='persistent'
 				anchor='left'
 				open={openFilter}
 			>
-				<Box
-					sx={{
-						paddingTop: "15px",
-						paddingBottom: "10px",
-						paddingLeft: "10px",
-					}}
-				>
-					<Typography
-						variant='h5'
-						noWrap
-						color='#1469FB'
-					>
-						LEGALEEY
-					</Typography>
-				</Box>
 				<Box
 					sx={{
 						backgroundColor: "#eee",

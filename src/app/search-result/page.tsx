@@ -35,7 +35,6 @@ import SelectColumn from "@/components/select-Column/selectColumn";
 import SearchFilter from "@/components/SearchFilter";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 
-
 const data = [
 	{
 		id: 1,
@@ -184,6 +183,7 @@ export default function SearchResult() {
 	}
 	function handleFilterChange(nowOpen: boolean) {
 		setOpenFilter(nowOpen);
+
 		setDataGridMargin(nowOpen);
 	}
 	function setDataGridMargin(openFilter: boolean) {
@@ -199,40 +199,44 @@ export default function SearchResult() {
 			<Grid>
 				<Grid
 					item
-					xs={12}
+					xs={10}
 					sx={{ borderBottom: 1, borderBlockColor: "#ECECED" }}
 				>
 					<Grid
 						container
 						alignItems='center'
 					>
-						<Grid
-							item
-							xs={2}
-						>
-							<Box
-  sx={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#E9EEF6",
-    p: 2,
-  }}
-  onClick={() => handleFilterChange(true)}
->
-  <Box sx={{ display: "flex", alignItems: "center" }}>
-    <FilterIcon sx={{ mr: 1 }} />
-    <Typography>Filters</Typography>
-  </Box>
-  <FirstPageIcon />
-</Box>
-
-						</Grid>
+						{openFilter ? (
+							<></>
+						) : (
+							<Grid
+								item
+								xs={2}
+							>
+								<Box
+									sx={{
+										display: "flex",
+										alignItems: "center",
+										justifyContent: "space-between",
+										backgroundColor: "#E9EEF6",
+										p: 2,
+									}}
+									onClick={() => handleFilterChange(true)}
+								>
+									<Box sx={{ display: "flex", alignItems: "center" }}>
+										<FilterIcon sx={{ mr: 1 }} />
+										<Typography>Filters</Typography>
+									</Box>
+									<FirstPageIcon />
+								</Box>
+							</Grid>
+						)}
 						<Grid
 							item
 							xs={8}
 							sx={{
 								ml: filterMargin,
+								paddingY: 2,
 							}}
 						>
 							<Breadcrumbs aria-label='breadcrumb'>
@@ -270,7 +274,7 @@ export default function SearchResult() {
 				>
 					<Typography
 						variant='h5'
-						sx={{ ml: 3 }}
+						sx={{ ml: 2 }}
 					>
 						Search Result
 					</Typography>
@@ -323,7 +327,7 @@ export default function SearchResult() {
 				<Grid
 					item
 					xs={12}
-					sx={{ ml: filterMargin, mr: 2 }}
+					sx={{ ml: filterMargin, mr: 2,p:2 }}
 				>
 					<Box
 						sx={{
@@ -333,7 +337,7 @@ export default function SearchResult() {
 							backgroundColor: "#E9EEF6",
 							p: 2,
 							borderRadius: "36px",
-							ml: 5,
+							ml: 2,
 						}}
 					>
 						<Typography sx={{ color: "#5F6774", fontWeight: "bold" }}>

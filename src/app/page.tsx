@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+
 import { Authenticator, Heading, View, Image, Button, useAuthenticator, useTheme, Theme, ThemeProvider, Text, Flex, Link, CheckboxField } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './../aws-exports';
@@ -13,6 +14,8 @@ import dynamic from "next/dynamic";
 import { I18n } from 'aws-amplify/utils';
 
 Amplify.configure(awsExports);
+
+
 
 I18n.putVocabularies({
   en: {
@@ -67,7 +70,13 @@ const components = {
   Header() {
     const { tokens } = useTheme();
     return (
-      <View textAlign="center" padding={tokens.space.large}></View>
+      <>
+      <head>
+				   <link rel="icon" href="/favicon.ico" />
+			    </head>
+          <View textAlign="center" padding={tokens.space.large}></View>
+      </>
+     
     );
   },
 
