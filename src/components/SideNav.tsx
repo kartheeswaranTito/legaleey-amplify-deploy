@@ -26,7 +26,7 @@ import {
 } from "@mui/icons-material";
 import MyDocumnets from "../app/my-documents/page";
 import { withRouter } from "next/router";
-
+import Link from "next/link";
 const drawerWidth = 256;
 
 
@@ -77,13 +77,18 @@ const SideNav: React.FC = () => {
 					
 				}}
 			>
+				<Link href="/home" passHref>
 				<Typography
 					variant='h5'
 					noWrap
 					color='#1469FB'
+					sx={{
+						'&:hover': { textDecoration: 'none' },	 
+					  }}
 				>
 					LEGALEEY
 				</Typography>
+				</Link>
 			</Toolbar>
 			<Box sx={{ overflow: "auto" }}>
 				<List>
