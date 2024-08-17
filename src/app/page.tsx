@@ -282,7 +282,6 @@ const formFields = {
     },
     phone_number: {
       labelHidden: true,
-      dialCodeList: ['+1', '+123', '+227', '+229'],
       order: 6,
     },
   },
