@@ -249,7 +249,7 @@ const components = {
 const formFields = {
   signIn: {
     username: {
-      placeholder: 'Enter Email',
+      placeholder: 'Enter Username',
       labelHidden: true,
     },
     password: {
@@ -282,7 +282,6 @@ const formFields = {
     },
     phone_number: {
       labelHidden: true,
-      dialCodeList: ['+1', '+123', '+227', '+229'],
       order: 6,
     },
   },
