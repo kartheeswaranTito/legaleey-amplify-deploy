@@ -28,12 +28,16 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 import { Accordion, useAuthenticator } from "@aws-amplify/ui-react";
+import { signOut } from 'aws-amplify/auth';
+import { useRouter } from "next/navigation";
 
 const TopNav: React.FC = () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const { signOut } = useAuthenticator();
-
+	const router = useRouter();
+	// const { signOut } = useAuthenticator();
+	//const { user } = useAuthenticator();
+//  console.log(user.signInDetails,"curent usernamen");
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -42,10 +46,21 @@ const TopNav: React.FC = () => {
 		setAnchorEl(null);
 	};
 
+	
+
+async function handleSignOut() {
+	
+  try {
+	await signOut();
+	router.push('/');
+  } catch (error) {
+    console.log('error signing out: ', error);
+  }
+}
 	return (
 		<AppBar
 			position='static'
-			sx={{ backgroundColor: "#F7F4F7", borderRadius: "0 0 0 20px", pb: 1 }}
+			sx={{ backgroundColor: "#F7F9FC", borderRadius: "0 0 0 20px", pb: 1 }}
 		>
 			<Toolbar>
 				<Typography
@@ -232,7 +247,7 @@ const TopNav: React.FC = () => {
 								sx={{
 									width: "100%",
 								}}
-								onClick={signOut}
+								onClick={handleSignOut}
 							>
 								SignOut
 							</Button>
