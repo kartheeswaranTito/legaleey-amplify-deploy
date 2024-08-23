@@ -36,12 +36,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import TuneIcon from "@mui/icons-material/Tune";
 import HomeIcon from "@mui/icons-material/HomeOutlined";
 import { useAuthenticator } from "@aws-amplify/ui-react";
+import { useRouter } from "next/navigation";
+import { signOut } from "aws-amplify/auth";
 
 const TopNavSearch: React.FC = () => {
 
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const { signOut } = useAuthenticator();
+	// const { signOut } = useAuthenticator();
+	const router = useRouter();
 
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -50,6 +53,16 @@ const TopNavSearch: React.FC = () => {
 	const handleClose = () => {
 		setAnchorEl(null);
 	};
+
+	async function handleSignOut() {
+	
+		try {
+		  await signOut();
+		  router.push('/');
+		} catch (error) {
+		  console.log('error signing out: ', error);
+		}
+	  }
 
 	return (
 		<AppBar
@@ -321,7 +334,7 @@ const TopNavSearch: React.FC = () => {
 								sx={{
 									width: "100%",
 								}}
-								onClick={signOut}
+								onClick={handleSignOut}
 							>
 								SignOut
 							</Button>

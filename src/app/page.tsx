@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 
 
 import { I18n } from 'aws-amplify/utils';
+import { useRouter } from 'next/navigation';
 
 Amplify.configure(awsExports);
 
@@ -331,19 +332,33 @@ const formFields = {
   },
 };
 
-function App() {
+function App(props: any) {
   return (
-    <ThemeProvider theme={theme}>
-       <Box className="centered-box">
-        <Authenticator formFields={formFields} components={components}>
-          <Home />
-        </Authenticator>
-      </Box>
-    </ThemeProvider>
+    <Authenticator.Provider>
+      <ThemeProvider theme={theme}>
+        <Box className="centered-box">
+          <Authenticator formFields={formFields} components={components}>
+            <AuthenticatedApp {...props} />
+          </Authenticator>
+        </Box>
+      </ThemeProvider>
+    </Authenticator.Provider>
   );
 }
 
-// export default App;
+function AuthenticatedApp(props: any) {
+  const { authStatus } = useAuthenticator(context => [context.authStatus]);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (authStatus === 'authenticated') {
+      router.push('/home'); 
+    }
+  }, [authStatus, router]);
+
+  return authStatus !== 'authenticated' ? <Authenticator /> : null;
+}
+
 
 export default dynamic(() => Promise.resolve(App), {
   ssr: false,
