@@ -217,11 +217,11 @@ const components = {
         <View>
           <Heading padding={`${tokens.space.xl} 0 0 0`} level={4}>
             <Text color={"#1469FB"}>LEGALEEY</Text>
-            <Text color={"#393940"} marginTop="5px">Enter Username</Text>
+            <Text color={"#393940"} marginTop="5px">Enter Email </Text>
           </Heading>
           <Flex>
             <Text color={"#7E7E83"} padding={`11px 0 0 0`} fontSize="14px">
-              Enter your Username to send code on your registered Email to complete the verification process.
+              Enter your Email Id to send code on your registered Email to complete the verification process.
             </Text>
           </Flex>
         </View>
@@ -295,7 +295,8 @@ const formFields = {
   },
   forgotPassword: {
     username: {
-      placeholder: 'Enter Username',
+      label: 'number',
+      placeholder: 'Enter your Email',
       labelHidden: true,
     },
   },
