@@ -3,18 +3,19 @@ import React from 'react';
 
 import { Authenticator, Heading, View, Image, Button, useAuthenticator, useTheme, Theme, ThemeProvider, Text, Flex, Link, CheckboxField } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
-import awsExports from './../aws-exports';
+
 import { Amplify } from 'aws-amplify';
 import { Box, TextField } from '@mui/material';
 import Home from '@/app/home/page';
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
 
+import outputs from "../../amplify_outputs.json"
+
 
 import { I18n } from 'aws-amplify/utils';
-import { useRouter } from 'next/navigation';
 
-Amplify.configure(awsExports);
+Amplify.configure(outputs);
 
 
 
@@ -332,33 +333,19 @@ const formFields = {
   },
 };
 
-function App(props: any) {
+function App() {
   return (
-    <Authenticator.Provider>
-      <ThemeProvider theme={theme}>
-        <Box className="centered-box">
-          <Authenticator formFields={formFields} components={components}>
-            <AuthenticatedApp {...props} />
-          </Authenticator>
-        </Box>
-      </ThemeProvider>
-    </Authenticator.Provider>
+    <ThemeProvider theme={theme}>
+       <Box className="centered-box">
+        <Authenticator formFields={formFields} components={components}>
+          <Home />
+        </Authenticator>
+      </Box>
+    </ThemeProvider>
   );
 }
 
-function AuthenticatedApp(props: any) {
-  const { authStatus } = useAuthenticator(context => [context.authStatus]);
-  const router = useRouter();
-
-  React.useEffect(() => {
-    if (authStatus === 'authenticated') {
-      router.push('/home'); 
-    }
-  }, [authStatus, router]);
-
-  return authStatus !== 'authenticated' ? <Authenticator /> : null;
-}
-
+// export default App;
 
 export default dynamic(() => Promise.resolve(App), {
   ssr: false,
