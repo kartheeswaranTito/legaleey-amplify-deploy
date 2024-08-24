@@ -9,12 +9,10 @@ import { Box, TextField } from '@mui/material';
 import Home from '@/app/home/page';
 import type { AppProps } from "next/app";
 import dynamic from "next/dynamic";
-
 import outputs from "../../amplify_outputs.json"
-
-
 import { I18n } from 'aws-amplify/utils';
-
+import { translations } from '@aws-amplify/ui-react';
+I18n.putVocabularies(translations);
 Amplify.configure(outputs);
 
 
@@ -26,6 +24,7 @@ I18n.putVocabularies({
     'Create Account': 'CREATE ACCOUNT'
   },
 });
+
 
 const theme: Theme = {
   name: 'Auth Example Theme',
@@ -213,6 +212,12 @@ const components = {
   ForgotPassword: {
     Header() {
       const { tokens } = useTheme();
+
+      I18n.putVocabulariesForLanguage('en', {
+        'username is required to resetPassword': 'Email is required to Reset Password',
+        
+      });
+
       return (
         <View>
           <Heading padding={`${tokens.space.xl} 0 0 0`} level={4}>
@@ -295,7 +300,6 @@ const formFields = {
   },
   forgotPassword: {
     username: {
-      label: 'number',
       placeholder: 'Enter your Email',
       labelHidden: true,
     },
