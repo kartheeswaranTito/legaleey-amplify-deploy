@@ -296,6 +296,7 @@ const formFields = {
     phone_number: {
       labelHidden: true,
       order: 6,
+      isRequired: true,
     },
   },
   confirmSignUp: {
