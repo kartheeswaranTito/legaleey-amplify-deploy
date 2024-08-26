@@ -13,6 +13,7 @@ import outputs from "../../amplify_outputs.json"
 import { I18n } from 'aws-amplify/utils';
 import { translations } from '@aws-amplify/ui-react';
 I18n.putVocabularies(translations);
+
 Amplify.configure(outputs);
 
 
@@ -122,6 +123,11 @@ const components = {
   SignUp: {
     Header() {
       const { tokens } = useTheme();
+
+      I18n.putVocabulariesForLanguage('en', {
+       'username is required to signUp': 'Email is required to SignUp',
+        
+      });
       return (
         <View>
           <Heading padding={`0 0 0 ${tokens.space.xl}`} level={4}>
