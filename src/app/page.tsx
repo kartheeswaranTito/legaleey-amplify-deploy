@@ -14,7 +14,6 @@ import { I18n } from 'aws-amplify/utils';
 import { translations } from '@aws-amplify/ui-react';
 I18n.putVocabularies(translations);
 
-
 Amplify.configure(outputs);
 
 
@@ -26,6 +25,7 @@ I18n.putVocabularies({
     'Create Account': 'CREATE ACCOUNT'
   },
 });
+
 
 const theme: Theme = {
   name: 'Auth Example Theme',
@@ -218,15 +218,21 @@ const components = {
   ForgotPassword: {
     Header() {
       const { tokens } = useTheme();
+
+      I18n.putVocabulariesForLanguage('en', {
+        'username is required to resetPassword': 'Email is required to Reset Password',
+        
+      });
+
       return (
         <View>
           <Heading padding={`${tokens.space.xl} 0 0 0`} level={4}>
             <Text color={"#1469FB"}>LEGALEEY</Text>
-            <Text color={"#393940"} marginTop="5px">Enter Username</Text>
+            <Text color={"#393940"} marginTop="5px">Enter Email </Text>
           </Heading>
           <Flex>
             <Text color={"#7E7E83"} padding={`11px 0 0 0`} fontSize="14px">
-              Enter your Username to send code on your registered Email to complete the verification process.
+              Enter your Email Id to send code on your registered Email to complete the verification process.
             </Text>
           </Flex>
         </View>
@@ -300,7 +306,7 @@ const formFields = {
   },
   forgotPassword: {
     username: {
-      placeholder: 'Enter Username',
+      placeholder: 'Enter your Email',
       labelHidden: true,
     },
   },
