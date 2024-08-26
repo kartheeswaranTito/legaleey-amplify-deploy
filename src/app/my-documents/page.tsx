@@ -86,31 +86,9 @@ export default function MyDocuments() {
                             letterSpacing: "0.46px",
                              mb: 2,
                           }}
-
                         >
                             There Are No Verified Documents
                         </Typography>
-                        
-                         {/* <Button
-                        variant="contained"
-                        size="large"
-                        startIcon={<AddIcon />}
-                        sx={{
-                            width: "141px",
-                            height: "42px",
-                            mt: "16px",
-                            mx: "auto",
-                            padding: "8px 22px",
-                            backgroundColor: "#397EF3",
-                           boxShadow: "none",
-                           
-                        }}
-                        onClick={() => {
-                            document.getElementById("file_upload")?.click();
-                        }}
-                    >
-                        ADD NEW
-                    </Button> */}
                     </Box>
                 ) : isNewUser && value === "2" ? (
                     <Box sx={{ textAlign: "center", mt: 5 }}>
@@ -135,8 +113,6 @@ export default function MyDocuments() {
                             letterSpacing: "0.46px",
                              mb: 2,
                           }}
-                  
-                        
                         >
                             There Are No UnVerified Documents
                         </Typography>
