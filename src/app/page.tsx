@@ -162,7 +162,7 @@ const components = {
               hasError={!!validationErrors.acknowledgement}
               name="acknowledgement"
               value="yes"
-              label=""
+              required
             />
             <Text color={"#7E7E83"} fontSize="12px">I have read and agree to the <Link color="#1469FB">Terms & Conditions </Link> and <Link color="#1469FB">Privacy Policy.</Link></Text>
           </Flex>
