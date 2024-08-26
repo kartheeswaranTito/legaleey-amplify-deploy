@@ -1,6 +1,6 @@
 "use client";
 
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import CommonLayout from "@/components/CommonLayout";
 import { Box, Breadcrumbs, Link, Tab, Typography, Button } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
@@ -15,13 +15,32 @@ import { edgeServerAppPaths } from "next/dist/build/webpack/plugins/pages-manife
 
 export default function MyDocuments() {
     const [value, setValue] = useState("1");
-    const [isNewUser, setIsNewUser] = useState(false);
+    const [isNewUser, setIsNewUser] = useState(true);
+    const [showStorageManager, setShowStorageManager] = useState(isNewUser);
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        
         if (isNewUser && newValue === "3") return;
         setValue(newValue);
     };
+
+    const handleDragEnter = (event: DragEvent) => {
+        event.preventDefault();
+        setShowStorageManager(true);
+    };
+
+    const handleDragOver = (event: DragEvent) => {
+        event.preventDefault();
+    };
+
+    useEffect(() => {
+        window.addEventListener("dragenter", handleDragEnter);
+        window.addEventListener("dragover", handleDragOver);
+
+        return () => {
+            window.removeEventListener("dragenter", handleDragEnter);
+            window.removeEventListener("dragover", handleDragOver);
+        };
+    }, []);
 
     return (
         <CommonLayout>
@@ -116,25 +135,6 @@ export default function MyDocuments() {
                         >
                             There Are No UnVerified Documents
                         </Typography>
-                        {/* <Button
-                        variant="contained"
-                        size="large"
-                        startIcon={<AddIcon />}
-                        sx={{
-                            width: "141px",
-                            height: "42px",
-                            mt: "16px",
-                            mx: "auto",
-                            padding: "8px 22px",
-                            backgroundColor: "#397EF3",
-                           boxShadow: "none",
-                        }}
-                        onClick={() => {
-                            document.getElementById("file_upload")?.click();
-                        }}
-                    >
-                        ADD NEW
-                    </Button> */}
                     </Box>
                 ) : (
                     <>
@@ -150,8 +150,9 @@ export default function MyDocuments() {
                     </>
                 )}
             </TabContext>
-            <Box sx={{ padding: 5, mt:-5,}}>
-                {StorageManager && (
+
+            {showStorageManager && (
+                <Box sx={{ padding: 5, mt: -5 }}>
                     <StorageManager
                         acceptedFileTypes={["*"]}
                         path='public/'
@@ -171,9 +172,8 @@ export default function MyDocuments() {
                             },
                         }}
                     />
-                )}
-            </Box>
+                </Box>
+            )}
         </CommonLayout>
     );
 }
-
